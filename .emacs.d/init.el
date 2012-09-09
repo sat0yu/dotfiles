@@ -99,20 +99,22 @@
 ;;; 現在の関数名をウィンドウ上部に表示する。
 (which-function-mode 1)
 
-;;;------------------------------
+;;------------------------------
+;; 以下, auto-install.elが絡んだ設定
+;;------------------------------
 ;;; パスを通す
-;;(setq load-path (cons "~/config_file/.emacs.d/elisp" load-path))
+(setq load-path (cons "~/config_file/.emacs.d/elisp" load-path))
 
 ;;; @ auto-install.el
-;;(require 'auto-install)
-;;(setq auto-install-directory "~/config_file/.emacs.d/elisp/")
-;;(auto-install-update-emacswiki-package-name t)
-;;(auto-install-compatibility-setup) 
+(require 'auto-install)
+(setq auto-install-directory "~/config_file/.emacs.d/elisp/")
+(auto-install-update-emacswiki-package-name t)
+(auto-install-compatibility-setup) 
 
 ;;; @ auto-complete
-;;(require 'auto-complete)
-;;(global-auto-complete-mode t)
+(require 'auto-complete)
+(global-auto-complete-mode t)
 
 ;;; @ js2-mode.el
-;;(when (autoload 'js2-mode "js2-mode" nil t)
-;;  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
+(when (autoload 'js2-mode "js2-mode" nil t)
+  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
