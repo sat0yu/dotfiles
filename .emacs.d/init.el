@@ -6,20 +6,6 @@
 ;; Localeに合わせた環境の設定
 (set-locale-environment nil)
 
-;;; パスを通す
-(setq load-path (cons "~/config_file/.emacs.d/elisp" load-path))
-
-;;; auto-install.el
-(require 'auto-install)
-(setq auto-install-directory "~/config_file/.emacs.d/elisp/")
-(auto-install-update-emacswiki-package-name t)
-(auto-install-compatibility-setup) 
-
-;;; auto-complete
-(require 'auto-complete)
-(global-auto-complete-mode t)
-
-
 ;;; キーバインド
 ;; C-hでバックスペース
 (keyboard-translate ?\C-h ?\C-?)
@@ -40,35 +26,29 @@
 ;; C-x V -> 変数定義へ移動
 (find-function-setup-keys)
 
-
 ;;; 画像
 ;; 画像ファイルを表示
 (auto-image-file-mode t)
 
-
 ;;; バー
 ;; メニューバーを消す
 (menu-bar-mode -1)
-;; ツールバーを消す
-(tool-bar-mode -1)
-
 
 ;;; カーソル
 ;; カーソルの点滅を止める
 (blink-cursor-mode 0)
-
+;; リージョンに色を付ける
+(transient-mark-mode 1)
 
 ;;; eval
 ;; evalした結果を全部表示
 (setq eval-expression-print-length nil)
-
 
 ;;; 括弧
 ;; 対応する括弧を光らせる。
 (show-paren-mode 1)
 ;; ウィンドウ内に収まらないときだけ括弧内も光らせる。
 (setq show-paren-style 'mixed)
-
 
 ;;; 位置
 ;; 現在行を目立たせる
@@ -78,7 +58,6 @@
 ;; カーソルの位置が何行目かを表示する
 (line-number-mode t)
 
-
 ;;; 行
 ;; 行の先頭でC-kを一回押すだけで行全体を消去する
 (setq kill-whole-line t)
@@ -87,13 +66,11 @@
 ;; バッファの最後でnewlineで新規行を追加するのを禁止する
 (setq next-line-add-newlines nil)
 
-
 ;;; バックアップ
 ;; バックアップファイルを作らない
 (setq backup-inhibited t)
 ;; 終了時にオートセーブファイルを消す
 (setq delete-auto-save-files t)
-
 
 ;;; 補完
 ;; 補完時に大文字小文字を区別しない
@@ -122,6 +99,20 @@
 ;;; 現在の関数名をウィンドウ上部に表示する。
 (which-function-mode 1)
 
+;;;------------------------------
+;;; パスを通す
+;;(setq load-path (cons "~/config_file/.emacs.d/elisp" load-path))
+
+;;; @ auto-install.el
+;;(require 'auto-install)
+;;(setq auto-install-directory "~/config_file/.emacs.d/elisp/")
+;;(auto-install-update-emacswiki-package-name t)
+;;(auto-install-compatibility-setup) 
+
+;;; @ auto-complete
+;;(require 'auto-complete)
+;;(global-auto-complete-mode t)
+
 ;;; @ js2-mode.el
-(when (autoload 'js2-mode "js2-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
+;;(when (autoload 'js2-mode "js2-mode" nil t)
+;;  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
