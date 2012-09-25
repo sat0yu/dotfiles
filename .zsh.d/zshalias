@@ -1,3 +1,7 @@
 alias tmux="tmux -f ~/config_file/.tmux.conf"
 alias emacs="emacs -nw"
 alias ls="ls -al"
+alias startvm="VBoxManage startvm ubuntu --type=headless"
+alias pausevm="VBoxManage controlvm ubuntu pause"
+alias resumevm="VBoxManage controlvm ubuntu resume"
+alias vmlist="VBoxManage list runningvms"
