@@ -1,5 +1,10 @@
 # -*- sh -*-
 
+# 言語設定
+export LANG=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
+export LC_CTYPE=ja_JP.UTF-8
+
 # キーバインド
 ## Emacsキーバインドを使う。
 bindkey -e
