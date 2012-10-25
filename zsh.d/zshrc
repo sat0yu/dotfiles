@@ -369,7 +369,7 @@ alias enw="emacs -nw"
 alias x="exit"
 
 ## カスタムaliasの設定
-### ~/.zsh.d/zshalias → ~/.zshaliasの順に探して
+### ~/zsh.d/zshalias → ~/zshaliasの順に探して
 ### 最初に見つかったファイルを読み込む。
 ### (N-.): 存在しないファイルは登録しない。
 ###    パス(...): ...という条件にマッチするパスのみ残す。
@@ -378,9 +378,9 @@ alias x="exit"
 ###            -: シンボリックリンク先のパスを評価。
 ###            .: 通常のファイルのみ残す。
 ### 2011-11-06
-alias_files=(~/.zsh.d/zshalias(N-.)
-             ~/.zshalias(N-.)
-	     ~/dotfiles/.zsh.d/zshalias(N-.))
+alias_files=(~/zsh.d/zshalias(N-.)
+             ~/zshalias(N-.)
+	     ~/dotfiles/zsh.d/zshalias(N-.))
 for alias_file in ${alias_files}; do
     source "${alias_file}"
     break
