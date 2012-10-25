@@ -1,2 +1,2 @@
-(setq load-path (cons "~/config_file/.emacs.d" load-path))
+(setq load-path (cons "~/dotfiles/emacs.d" load-path))
 (load "init.el")
