@@ -3,7 +3,6 @@ alias -g G='| grep'
 alias -g H='| head'
 alias -g T='| tail'
 
-alias tmux="tmux -f ~/config_file/.tmux.conf"
 alias emacs="emacs -nw"
 alias ls="ls -al"
 alias startvm="VBoxManage startvm ubuntu --type=headless"

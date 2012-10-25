@@ -380,7 +380,7 @@ alias x="exit"
 ### 2011-11-06
 alias_files=(~/.zsh.d/zshalias(N-.)
              ~/.zshalias(N-.)
-	     ~/config_file/.zsh.d/zshalias(N-.))
+	     ~/dotfiles/.zsh.d/zshalias(N-.))
 for alias_file in ${alias_files}; do
     source "${alias_file}"
     break
