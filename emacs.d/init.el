@@ -113,11 +113,11 @@
 ;; 以下, auto-install.elが絡んだ設定
 ;;------------------------------
 ;;; パスを通す
-(setq load-path (cons "~/config_file/.emacs.d/elisp" load-path))
+(setq load-path (cons "~/dotfiles/emacs.d/elisp" load-path))
 
 ;;; @ auto-install.el
 (require 'auto-install)
-(setq auto-install-directory "~/config_file/.emacs.d/elisp/")
+(setq auto-install-directory "~/dotfiles/emacs.d/elisp/")
 (auto-install-update-emacswiki-package-name t)
 (auto-install-compatibility-setup) 
 
