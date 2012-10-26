@@ -8,6 +8,9 @@ export PIP_RESPECT_VIRTUALENV=true
 export PIP_REQUIRE_VIRTUALENV=true
 ## 仮想環境を置くディレクトリ
 export WORKON_HOME=${HOME}/.virtualenvs
+## pythonのパスを設定($PATHの内容から変更する) 
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+## virtualenvのパスを設定($PATHの内容から変更する)
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/share/python/virtualenv
 ## virtualenvwrapperスクリプトの実行
 if [ -f /usr/local/share/python/virtualenvwrapper.sh ]; then
