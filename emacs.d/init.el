@@ -116,14 +116,15 @@
 (setq load-path (cons "~/dotfiles/emacs.d/elisp" load-path))
 
 ;;; @ auto-install.el
-(require 'auto-install)
-(setq auto-install-directory "~/dotfiles/emacs.d/elisp/")
-(auto-install-update-emacswiki-package-name t)
-(auto-install-compatibility-setup) 
+;;(require 'auto-install)
+;;(setq auto-install-directory "~/dotfiles/emacs.d/elisp/")
+;;(auto-install-update-emacswiki-package-name t)
+;;(auto-install-compatibility-setup) 
 
 ;;; @ auto-complete
 (require 'auto-complete)
 (global-auto-complete-mode t)
+(setq ac-sources '(ac-source-words-in-same-mode-buffers ac-source-abbrev ac-source-words-in-buffer))
 
 ;;; @ js2-mode.el
 (autoload 'js2-mode "js2" nil t)
