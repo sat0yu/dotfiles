@@ -122,9 +122,18 @@
 ;;(auto-install-compatibility-setup) 
 
 ;;; @ auto-complete
+;; 以下のコマンドでインストールすること
+;; M-x auto-install-batch <RET>  
+;; Extension name: auto-complete development version <RET>
 (require 'auto-complete)
+(require 'auto-complete-config)
 (global-auto-complete-mode t)
-(setq ac-sources '(ac-source-words-in-same-mode-buffers ac-source-abbrev ac-source-words-in-buffer))
+;; 補完情報源の指定
+(setq ac-sources '(ac-source-words-in-same-mode-buffers ac-source-filename ac-source-abbrev))
+;; 補完可能になるまでの遅延時間(sec)
+(setq ac-delay 0.1)
+;; 補完メニュー表示開始までの時間(sec)：nilで表示なし
+(setq ac-auto-show-menu 0.1)
 
 ;;; @ js2-mode.el
 (autoload 'js2-mode "js2" nil t)
