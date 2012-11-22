@@ -10,11 +10,12 @@
 ;; C-hでバックスペース
 (keyboard-translate ?\C-h ?\C-?)
 ;; 基本
-(define-key global-map (kbd "M-?") 'help-for-help)        ; ヘルプ
-(define-key global-map (kbd "C-z") 'undo)                 ; undo
-(define-key global-map (kbd "C-c C-i") 'hippie-expand)    ; 補完
-(define-key global-map (kbd "C-c ;") 'comment-dwim)       ; コメントアウト
-(define-key global-map (kbd "C-c C-l") 'goto-line)      ; 指定行へ移動
+(define-key global-map (kbd "M-?") 'help-for-help)  ; ヘルプ
+(define-key global-map (kbd "C-z") 'undo)  ; undo
+(define-key global-map (kbd "C-c C-i") 'hippie-expand)  ; 補完
+(define-key global-map (kbd "C-c ;") 'comment-dwim)  ; コメントアウト
+(define-key global-map (kbd "C-c C-l") 'goto-line)  ; 指定行へ移動
+(define-key global-map (kbd "C-c C-f") 'occur)  ; 検索
 ;; ウィンドウ移動
 ;; 次のウィンドウへ移動
 (define-key global-map (kbd "C-M-n") 'next-multiframe-window)
@@ -82,6 +83,10 @@
 ;; 補完可能なものを随時表示
 (icomplete-mode 1)
 
+;;; C-x bでミニバッファにバッファ候補を表示
+(iswitchb-mode t)
+(iswitchb-default-keybindings)
+
 ;;; 履歴
 ;; 履歴数を大きくする
 (setq history-length 10000)
@@ -138,3 +143,15 @@
 ;;; @ js2-mode.el
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+;;; @ dired-x.el
+;; 最近のemacsにはdiredの拡張版dired-xも同梱されているので標準で使用可能
+(require 'dired-x)
+(add-hook 'dired-load-hook (lambda () (load "dired-x")))
+(define-key global-map (kbd "C-x C-j") 'dired-jump-other-window)  ; diredを別ウィンドウで起動
+
+;;; @ popwin.el
+;; (auto-install-from-url "https://raw.github.com/m2ym/popwin-el/master/popwin.el")
+(require 'popwin)
+(setq display-buffer-function 'popwin:display-buffer)
+(push '(dired-mode :position top) popwin:special-display-config)
