@@ -1,8 +1,13 @@
 ;;; 日本語環境
 ;; 言語を日本語に設定
-(set-language-environment 'Japanese)
+(set-language-environment       "Japanese")
 ;; utf-8を使用
-(prefer-coding-system 'utf-8)
+(prefer-coding-system           'utf-8-unix)
+(setq default-buffer-file-coding-system 'utf-8)
+(set-buffer-file-coding-system  'utf-8)
+(set-terminal-coding-system     'utf-8)
+(set-keyboard-coding-system     'utf-8)
+(set-clipboard-coding-system    'utf-8)
 ;; Localeに合わせた環境の設定
 (set-locale-environment nil)
 
