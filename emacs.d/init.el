@@ -31,15 +31,28 @@
 ;; 画像ファイルを表示
 (auto-image-file-mode t)
 
-;;; バー
+;;; 各種表示部分
 ;; メニューバーを消す
 (menu-bar-mode -1)
+;; ツールバー非表示
+;; (tool-bar-mode -1)
+;; スクロールバー非表示
+;; (set-scroll-bar-mode nil)
+;; 起動時のメッセージを非表示
+(setq inhibit-startup-screen t)
+;; scratchの初期メッセージ消去
+(setq initial-scratch-message "")
 
 ;;; カーソル
 ;; カーソルの点滅を止める
 (blink-cursor-mode 0)
 ;; リージョンに色を付ける
 (transient-mark-mode 1)
+
+;; 画面スクロール
+(setq scroll-conservatively 1)
+(setq scroll-step 1)
+(setq scroll-margin 4) ; default=0
 
 ;;; eval
 ;; evalした結果を全部表示
@@ -154,4 +167,5 @@
 ;; (auto-install-from-url "https://raw.github.com/m2ym/popwin-el/master/popwin.el")
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
-(push '(dired-mode :position top) popwin:special-display-config)
+(define-key global-map (kbd "C-x p") 'popwin:display-last-buffer)
+(push '(dired-mode :position top :height 12) popwin:special-display-config)
