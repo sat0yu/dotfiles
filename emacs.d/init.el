@@ -139,6 +139,8 @@
 (setq load-path (cons "~/dotfiles/emacs.d/elisp" load-path))
 
 ;;; @ auto-install.el
+;; 以下のurlから、wgetなりcurlなりでダウンロードして./elispの直下に配置
+;; http://www.emacswiki.org/emacs/download/auto-install.el
 ;;(require 'auto-install)
 ;;(setq auto-install-directory "~/dotfiles/emacs.d/elisp/")
 ;;(auto-install-update-emacswiki-package-name t)
