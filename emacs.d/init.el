@@ -17,6 +17,7 @@
 ;; 基本
 (define-key global-map (kbd "M-?") 'help-for-help)  ; ヘルプ
 (define-key global-map (kbd "C-z") 'undo)  ; undo
+(define-key global-map (kbd "C-c C-v") 'scroll-down)  ; 1画面分上へ
 (define-key global-map (kbd "C-c C-i") 'hippie-expand)  ; 補完
 (define-key global-map (kbd "C-c ;") 'comment-dwim)  ; コメントアウト
 (define-key global-map (kbd "C-c C-l") 'goto-line)  ; 指定行へ移動
