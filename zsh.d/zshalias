@@ -5,7 +5,14 @@ alias -g T='| tail'
 
 alias emacs="emacs -nw"
 alias ls="ls -al"
+
+alias tex="platex"
+alias bib="pbibtex"
+alias dvi="dvipdfmx"
+
 alias startvm="VBoxManage startvm ubuntu --type=headless"
 alias pausevm="VBoxManage controlvm ubuntu pause"
 alias resumevm="VBoxManage controlvm ubuntu resume"
 alias vmlist="VBoxManage list runningvms"
+
+alias coco="ssh yusuke_sato@coco.shino.ecei.tohoku.ac.jp"
