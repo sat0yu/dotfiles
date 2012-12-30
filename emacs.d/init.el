@@ -92,6 +92,10 @@
 ;; 終了時にオートセーブファイルを消す
 (setq delete-auto-save-files t)
 
+;;; バッファの自動再読み込み
+;; 他のプログラムで変更されたファイルを自動で再読み込み
+(global-auto-revert-mode 1)
+
 ;;; 補完
 ;; 補完時に大文字小文字を区別しない
 (setq completion-ignore-case t)
@@ -142,10 +146,10 @@
 ;;; @ auto-install.el
 ;; 以下のurlから、wgetなりcurlなりでダウンロードして./elispの直下に配置
 ;; http://www.emacswiki.org/emacs/download/auto-install.el
-;;(require 'auto-install)
-;;(setq auto-install-directory "~/dotfiles/emacs.d/elisp/")
-;;(auto-install-update-emacswiki-package-name t)
-;;(auto-install-compatibility-setup) 
+;; (require 'auto-install)
+;; (setq auto-install-directory "~/dotfiles/emacs.d/elisp/")
+;; (auto-install-update-emacswiki-package-name t)
+;; (auto-install-compatibility-setup) 
 
 ;;; @ auto-complete
 ;; 以下のコマンドでインストールすること
@@ -165,6 +169,12 @@
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
+;;; @ uniquify
+;; 同名ファイルのバッファ名の識別文字列を変更する
+;; uniquifyはemacs標準機能
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
 ;;; @ dired-x.el
 ;; 最近のemacsにはdiredの拡張版dired-xも同梱されているので標準で使用可能
 (require 'dired-x)
@@ -177,3 +187,89 @@
 (setq display-buffer-function 'popwin:display-buffer)
 (define-key global-map (kbd "C-x p") 'popwin:display-last-buffer)
 (push '(dired-mode :position top :height 12) popwin:special-display-config)
+
+;;; @ tabbar.el
+;; (M-x auto-install-from-emacswiki tabbar.el)
+(require 'tabbar)
+(tabbar-mode 1)
+ 
+;; タブ上でマウスホイール操作無効
+(tabbar-mwheel-mode -1)
+ 
+;; グループ化しない
+(setq tabbar-buffer-groups-function nil)
+ 
+;; 左に表示されるボタンを無効化
+(dolist (btn '(tabbar-buffer-home-button
+               tabbar-scroll-left-button
+               tabbar-scroll-right-button))
+  (set btn (cons (cons "" nil)
+                 (cons "" nil))))
+ 
+;; ウインドウからはみ出たタブを省略して表示
+(setq tabbar-auto-scroll-flag nil)
+ 
+;; タブとタブの間の長さ
+(setq tabbar-separator '(1.5))
+ 
+;; 外観変更
+(set-face-attribute
+ 'tabbar-default nil
+ :background "black"
+ :foreground "gray72"
+ :height 1.0)
+(set-face-attribute
+ 'tabbar-unselected nil
+ :background "black"
+ :foreground "grey72"
+ :box nil)
+(set-face-attribute
+ 'tabbar-selected nil
+ :background "black"
+ :foreground "#c82829"
+ :box nil)
+(set-face-attribute
+ 'tabbar-button nil
+ :box nil)
+(set-face-attribute
+ 'tabbar-separator nil
+ :height 1.2)
+
+;; タブに表示させるバッファの設定
+(defvar my-tabbar-displayed-buffers
+ '("scratch*" "*Messages*" "*Backtrace*" "*Colors*" "*Faces*" "*vc-")
+  "*Regexps matches buffer names always included tabs.")
+(defun my-tabbar-buffer-list ()
+  "Return the list of buffers to show in tabs.
+Exclude buffers whose name starts with a space or an asterisk.
+The current buffer and buffers matches `my-tabbar-displayed-buffers'
+are always included."
+  (let* ((hides (list ?\  ?\*))
+         (re (regexp-opt my-tabbar-displayed-buffers))
+         (cur-buf (current-buffer))
+         (tabs (delq nil
+                     (mapcar (lambda (buf)
+                               (let ((name (buffer-name buf)))
+                                 (when (or (string-match re name)
+                                           (not (memq (aref name 0) hides)))
+                                   buf)))
+                             (buffer-list)))))
+    ;; Always include the current buffer.
+    (if (memq cur-buf tabs)
+        tabs
+      (cons cur-buf tabs))))
+(setq tabbar-buffer-list-function 'my-tabbar-buffer-list)
+ 
+;; タブ移動キーバインド
+(global-set-key (kbd "M-n") 'tabbar-forward-tab)
+(global-set-key (kbd "M-p") 'tabbar-backward-tab)
+ 
+;; タブモードのオン/オフをトグル
+(global-set-key (kbd "M-4") 'tabbar-mode)
+
+;;; @ recentf-ext
+;; (M-x auto-install-from-emacswiki recentf-ext.el)
+;; 最近開いたファイル/ディレクトリの一覧を使用可能に
+(setq recentf-max-saved-items 100)
+(require 'recentf-ext)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
