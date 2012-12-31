@@ -85,6 +85,8 @@
 (setq require-final-newline t)
 ;; バッファの最後でnewlineで新規行を追加するのを禁止する
 (setq next-line-add-newlines nil)
+;; C-aでインデントを飛ばした行頭へ移動
+(global-set-key "\C-a" 'back-to-indentation)
 
 ;;; バックアップ
 ;; バックアップファイルを作らない
@@ -204,39 +206,50 @@
 ;; 最近のemacsにはdiredの拡張版dired-xも同梱されているので標準で使用可能
 (require 'dired-x)
 (add-hook 'dired-load-hook (lambda () (load "dired-x")))
-(define-key global-map (kbd "C-x C-j") 'dired-jump-other-window)  ; diredを別ウィンドウで起動
+;; tabbarではなくpopwinを優先したい場合はコメントアウト
+;; (define-key global-map (kbd "C-x d") 'dired-jump-other-window)
+;; フォルダを開く時, 新しいバッファを作成しない
+(defvar my-dired-before-buffer nil)
+(defadvice dired-advertised-find-file
+  (before kill-dired-buffer activate)
+  (setq my-dired-before-buffer (current-buffer)))
+(defadvice dired-advertised-find-file
+  (after kill-dired-buffer-after activate)
+  (if (eq major-mode 'dired-mode)
+      (kill-buffer my-dired-before-buffer)))
+(defadvice dired-up-directory
+  (before kill-up-dired-buffer activate)
+  (setq my-dired-before-buffer (current-buffer)))
+(defadvice dired-up-directory
+  (after kill-up-dired-buffer-after activate)
+  (if (eq major-mode 'dired-mode)
+      (kill-buffer my-dired-before-buffer)))
 
 ;;; @ popwin.el
 ;; (auto-install-from-url "https://raw.github.com/m2ym/popwin-el/master/popwin.el")
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 (define-key global-map (kbd "C-x p") 'popwin:display-last-buffer)
-(push '(dired-mode :position top :height 12) popwin:special-display-config)
+;; (push '(dired-mode :position top :height 12) popwin:special-display-config) ; tabbarとの競合回避
 
 ;;; @ tabbar.el
 ;; (M-x auto-install-from-emacswiki tabbar.el)
 (require 'tabbar)
 (tabbar-mode 1)
- 
 ;; タブ上でマウスホイール操作無効
 (tabbar-mwheel-mode -1)
- 
 ;; グループ化しない
 (setq tabbar-buffer-groups-function nil)
- 
 ;; 左に表示されるボタンを無効化
 (dolist (btn '(tabbar-buffer-home-button
                tabbar-scroll-left-button
                tabbar-scroll-right-button))
   (set btn (cons (cons "" nil)
                  (cons "" nil))))
- 
 ;; ウインドウからはみ出たタブを省略して表示
 (setq tabbar-auto-scroll-flag nil)
- 
 ;; タブとタブの間の長さ
 (setq tabbar-separator '(1.5))
- 
 ;; 外観変更
 (set-face-attribute
  'tabbar-default nil
@@ -259,16 +272,14 @@
 (set-face-attribute
  'tabbar-separator nil
  :height 1.2)
-
 ;; タブに表示させるバッファの設定
 (defvar my-tabbar-displayed-buffers
- '("scratch*" "*Messages*" "*Backtrace*" "*Colors*" "*Faces*" "*vc-")
+ '("*scratch*" "*Messages*" "*Backtrace*" "*Colors*" "*Faces*" "*vc-")
   "*Regexps matches buffer names always included tabs.")
 (defun my-tabbar-buffer-list ()
   "Return the list of buffers to show in tabs.
 Exclude buffers whose name starts with a space or an asterisk.
-The current buffer and buffers matches `my-tabbar-displayed-buffers'
-are always included."
+The current buffer and buffers matches `my-tabbar-displayed-buffers' are always included."
   (let* ((hides (list ?\  ?\*))
          (re (regexp-opt my-tabbar-displayed-buffers))
          (cur-buf (current-buffer))
@@ -284,11 +295,9 @@ are always included."
         tabs
       (cons cur-buf tabs))))
 (setq tabbar-buffer-list-function 'my-tabbar-buffer-list)
- 
 ;; タブ移動キーバインド
 (global-set-key (kbd "M-n") 'tabbar-forward-tab)
 (global-set-key (kbd "M-p") 'tabbar-backward-tab)
- 
 ;; タブモードのオン/オフをトグル
 (global-set-key (kbd "M-4") 'tabbar-mode)
 
