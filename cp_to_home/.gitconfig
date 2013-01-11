@@ -1,12 +1,13 @@
 [user]
-	name = yusuke
+	name = Yusuke Sato
 	email = yusuke1.sato9.git@gmail.com
 [color]
 	ui = true
 [alias]
 	co = checkout
 	st = status
+	stat = status
 	br = branch
 [core]
 	editor = emacs
-	excludefile = ~/.gitignore
+	excludesfile = /Users/yusuke/.gitignore_global
