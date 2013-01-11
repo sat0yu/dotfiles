@@ -10,4 +10,4 @@
 	br = branch
 [core]
 	editor = emacs
-	excludesfile = /Users/yusuke/.gitignore_global
+	excludesfile = ~/.gitignore_global
