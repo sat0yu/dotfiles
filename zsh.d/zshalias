@@ -10,6 +10,8 @@ alias tex="platex"
 alias bib="pbibtex"
 alias dvi="dvipdfmx"
 
+alias rpi="ssh pi@192.168.0.8"
+
 alias startvm="VBoxManage startvm ubuntu --type=headless"
 alias pausevm="VBoxManage controlvm ubuntu pause"
 alias resumevm="VBoxManage controlvm ubuntu resume"
