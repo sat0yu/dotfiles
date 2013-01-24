@@ -359,7 +359,7 @@ esac
 
 ## grepの表示を改善
 ### 2013-01-24
-alias grep="grep -n --color-auto"
+alias grep="grep -n --color=auto"
 
 ## Emacsのショートカット。
 ### 2011-11-06
