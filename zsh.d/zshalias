@@ -4,7 +4,7 @@ alias -g H='| head'
 alias -g T='| tail'
 
 alias emacs="emacs -nw"
-alias ls="ls -al"
+alias ls="la"
 
 alias tex="platex"
 alias bib="pbibtex"
