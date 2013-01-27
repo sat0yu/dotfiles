@@ -6,6 +6,8 @@ alias -g T='| tail'
 alias emacs="emacs -nw"
 alias ls="la"
 
+alias tig="tig --all"
+
 alias tex="platex"
 alias bib="pbibtex"
 alias dvi="dvipdfmx"
