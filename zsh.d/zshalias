@@ -21,4 +21,4 @@ alias vmlist="VBoxManage list runningvms"
 
 alias coco="ssh yusuke_sato@coco.shino.ecei.tohoku.ac.jp"
 alias unico="ssh yusuke_sato@unico.shino.ecei.tohoku.ac.jp"
-alias deco="ssh yusuke_sato@deco.shino.ecei.tohoku.ac.jp"
+alias deco="ssh yusuke_sato@deco.shino"
