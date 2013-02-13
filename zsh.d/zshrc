@@ -413,3 +413,10 @@ fi
 
 ## OS XにおいてGNUPLOTを使用可能にする(x11環境)
 export GNUTERM=x11
+
+## z
+_Z_CMD=j
+source /usr/local/etc/profile.d/z.sh
+precmd() {
+    _z --add "$(pwd -P)"
+}
