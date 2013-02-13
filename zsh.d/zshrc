@@ -362,8 +362,8 @@ esac
 alias grep="grep -n --color=auto"
 
 ## Emacsのショートカット。
-### 2011-11-06
-alias e="emacs &"
+### 2013-02-13
+alias e="emacs -nw"
 ### -nw: ターミナル内でEmacsを起動する。
 ### 2011-11-06
 alias enw="emacs -nw"
