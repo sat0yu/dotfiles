@@ -12,13 +12,15 @@ alias tex="platex"
 alias bib="pbibtex"
 alias dvi="dvipdfmx"
 
-alias rpi="ssh pi@192.168.0.8"
-
 alias startvm="VBoxManage startvm ubuntu --type=headless"
 alias pausevm="VBoxManage controlvm ubuntu pause"
 alias resumevm="VBoxManage controlvm ubuntu resume"
 alias vmlist="VBoxManage list runningvms"
 
+alias rpi="ssh yusuke@192.168.0.8"
+
 alias coco="ssh yusuke_sato@coco.shino.ecei.tohoku.ac.jp"
 alias unico="ssh yusuke_sato@unico.shino.ecei.tohoku.ac.jp"
 alias deco="ssh yusuke_sato@deco.shino"
+
+alias -s py=python
