@@ -307,3 +307,9 @@ The current buffer and buffers matches `my-tabbar-displayed-buffers' are always 
 (setq recentf-max-saved-items 100)
 (require 'recentf-ext)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+;;; @ rotate.el
+;; https://raw.github.com/daic-h/emacs-rotate/master/rotate.el
+(require 'rotate)
+(global-set-key (kbd "C-r") 'rotate-layout)
+(global-set-key (kbd "C-x C-o") 'rotate-window)
