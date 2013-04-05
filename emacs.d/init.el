@@ -23,10 +23,12 @@
 (define-key global-map (kbd "C-c C-l") 'goto-line)  ; 指定行へ移動
 (define-key global-map (kbd "C-c C-f") 'occur)  ; 検索
 ;; ウィンドウ移動
-;; 次のウィンドウへ移動
+;; 次/前のウィンドウへ移動
 (define-key global-map (kbd "C-M-n") 'next-multiframe-window)
-;; 前のウィンドウへ移動
 (define-key global-map (kbd "C-M-p") 'previous-multiframe-window)
+;;Shift + [<right>|<down>|<left>|<up>]
+(windmove-default-keybindings)
+(setq qindmove-wrap-around t)
 ;; 定義へ移動
 ;; C-x F -> 関数定義へ移動
 ;; C-x K -> キーにバインドされている関数定義へ移動
