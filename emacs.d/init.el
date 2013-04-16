@@ -104,15 +104,11 @@
 ;; 補完時に大文字小文字を区別しない
 (setq completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
-;; 部分一致の補完機能を使う
-;; p-bでprint-bufferとか
-(partial-completion-mode t)
 ;; 補完可能なものを随時表示
 (icomplete-mode 1)
 
 ;;; C-x bでミニバッファにバッファ候補を表示
 (iswitchb-mode t)
-(iswitchb-default-keybindings)
 
 ;;; 履歴
 ;; 履歴数を大きくする
