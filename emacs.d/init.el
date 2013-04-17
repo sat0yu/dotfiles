@@ -195,6 +195,10 @@
 ;;   (package-install-from-buffer  (package-buffer-info) 'single))
 (require 'melpa)
 
+;; @ expand-region.el
+(require 'expand-region)
+(global-set-key (kbd "C-@") 'er/expand-region)
+
 ;;------------------------------
 ;; 以下, auto-install.elが絡んだ設定
 ;;------------------------------
