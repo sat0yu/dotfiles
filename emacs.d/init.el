@@ -174,6 +174,28 @@
   (set-buffer (find-file (concat "/sudo::" file))))
 
 ;;------------------------------
+;; 以下, package.elが絡んだ設定
+;;------------------------------
+;;; @ package.el
+;; emacs24からは標準,emacs23までは手動でインストール
+(require 'package)
+; Add package-archives
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+; Initialize
+(package-initialize)
+
+;;; @ melpa.el
+;;; package.elを用いて、melpa.elをインストール
+;; 以下を*scratch*バッファに貼り付け、評価(C-j)
+;; (progn
+;;   (switch-to-buffer
+;;    (url-retrieve-synchronously
+;;     "https://raw.github.com/milkypostman/melpa/master/melpa.el"))
+;;   (package-install-from-buffer  (package-buffer-info) 'single))
+(require 'melpa)
+
+;;------------------------------
 ;; 以下, auto-install.elが絡んだ設定
 ;;------------------------------
 ;;; パスを通す
