@@ -35,6 +35,17 @@
 ;; C-x V -> 変数定義へ移動
 (find-function-setup-keys)
 
+;; emacs24ではマウスの設定が必要
+;; (1)マウス無効
+;;(setq mouse-wheel-mode nil)
+;; (2)マウススクロール可能
+(unless (fboundp 'track-mouse)
+  (defun track-mouse (e)))
+(xterm-mouse-mode t)
+(require 'mouse)
+(require 'mwheel)
+(mouse-wheel-mode t)
+
 ;;; 画像
 ;; 画像ファイルを表示
 (auto-image-file-mode t)
