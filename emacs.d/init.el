@@ -227,7 +227,11 @@
 ;;   (package-install-from-buffer  (package-buffer-info) 'single))
 (require 'melpa)
 
-;; @ expand-region.el
+;;; @ anything.el
+(require 'anything-startup)
+(global-set-key (kbd "C-x ;") 'anything)
+
+;;; @ expand-region.el
 (require 'expand-region)
 (global-set-key (kbd "M-SPC") 'er/expand-region)
 
