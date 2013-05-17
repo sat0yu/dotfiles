@@ -138,16 +138,6 @@
 ;;; 現在の関数名をウィンドウ上部に表示する。
 (which-function-mode 1)
 
-;; @ octave-mode
-(autoload 'octave-mode "octave-mod" nil t)
-(setq auto-mode-alist (cons '("\\.m$" . octave-mode) auto-mode-alist))
-(add-hook 'octave-mode-hook
-	  (lambda ()
-	    (abbrev-mode 1)
-	    (auto-fill-mode 1)
-	    (if (eq window-system 'x)
-		(font-lock-mode 1))))
-
 ;; ファイルをroot権限で開くための、trampの設定
 (defun th-rename-tramp-buffer ()
   (when (file-remote-p (buffer-file-name))
@@ -174,71 +164,27 @@
   (set-buffer (find-file (concat "/sudo::" file))))
 
 ;;------------------------------
-;; 以下, package.elが絡んだ設定
+;; 標準機能
 ;;------------------------------
-;;; @ package.el
-;; emacs24からは標準,emacs23までは手動でインストール
-(require 'package)
-; Add package-archives
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-; Initialize
-(package-initialize)
+;;; @ octave-mode
+(autoload 'octave-mode "octave-mod" nil t)
+(setq auto-mode-alist (cons '("\\.m$" . octave-mode) auto-mode-alist))
+(add-hook 'octave-mode-hook
+	  (lambda ()
+	    (abbrev-mode 1)
+	    (auto-fill-mode 1)
+	    (if (eq window-system 'x)
+		(font-lock-mode 1))))
 
-;;; @ melpa.el
-;;; package.elを用いて、melpa.elをインストール
-;; 以下を*scratch*バッファに貼り付け、評価(C-j)
-;; (progn
-;;   (switch-to-buffer
-;;    (url-retrieve-synchronously
-;;     "https://raw.github.com/milkypostman/melpa/master/melpa.el"))
-;;   (package-install-from-buffer  (package-buffer-info) 'single))
-(require 'melpa)
-
-;; @ expand-region.el
-(require 'expand-region)
-(global-set-key (kbd "C-@") 'er/expand-region)
-
-;;------------------------------
-;; 以下, auto-install.elが絡んだ設定
-;;------------------------------
-;;; パスを通す
-(setq load-path (cons "~/dotfiles/emacs.d/elisp" load-path))
-
-;;; @ auto-install.el
-;; 以下のurlから、wgetなりcurlなりでダウンロードして./elispの直下に配置
-;; http://www.emacswiki.org/emacs/download/auto-install.el
-;; (require 'auto-install)
-;; (setq auto-install-directory "~/dotfiles/emacs.d/elisp/")
-;; (auto-install-update-emacswiki-package-name t)
-;; (auto-install-compatibility-setup) 
-
-;;; @ auto-complete
-;; 以下のコマンドでインストールすること
-;; M-x auto-install-batch <RET>  
-;; Extension name: auto-complete development version <RET>
-(require 'auto-complete)
-(require 'auto-complete-config)
-(global-auto-complete-mode t)
-;; 補完情報源の指定
-(setq ac-sources '(ac-source-words-in-same-mode-buffers ac-source-filename ac-source-abbrev))
-;; 補完可能になるまでの遅延時間(sec)
-(setq ac-delay 0.1)
-;; 補完メニュー表示開始までの時間(sec)：nilで表示なし
-(setq ac-auto-show-menu 0.1)
-
-;;; @ js2-mode.el
+;;; @ js2-mode
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
-;;; @ uniquify
-;; 同名ファイルのバッファ名の識別文字列を変更する
-;; uniquifyはemacs標準機能
+;;; @ uniquify.el
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 ;;; @ dired-x.el
-;; 最近のemacsにはdiredの拡張版dired-xも同梱されているので標準で使用可能
 (require 'dired-x)
 (add-hook 'dired-load-hook (lambda () (load "dired-x")))
 ;; tabbarではなくpopwinを優先したい場合はコメントアウト
@@ -260,12 +206,51 @@
   (if (eq major-mode 'dired-mode)
       (kill-buffer my-dired-before-buffer)))
 
+;;------------------------------
+;; package.elでインストール
+;;------------------------------
+;;; @ package.el
+(require 'package)
+; Add package-archives
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+; Initialize
+(package-initialize)
+
+;;; @ melpa.el
+;;; package.elを用いて、melpa.elをインストール
+;; 以下を*scratch*バッファに貼り付け、評価(C-j)
+;; (progn
+;;   (switch-to-buffer
+;;    (url-retrieve-synchronously
+;;     "https://raw.github.com/milkypostman/melpa/master/melpa.el"))
+;;   (package-install-from-buffer  (package-buffer-info) 'single))
+(require 'melpa)
+
+;; @ expand-region.el
+(require 'expand-region)
+(global-set-key (kbd "M-SPC") 'er/expand-region)
+
+;;; @ auto-complete
+;; M-x auto-install-batch <RET>  
+;; Extension name: auto-complete development version <RET>
+(require 'auto-complete)
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
+;; 補完情報源の指定
+(setq ac-sources '(ac-source-words-in-same-mode-buffers ac-source-filename ac-source-abbrev))
+;; 補完可能になるまでの遅延時間(sec)
+(setq ac-delay 0.1)
+;; 補完メニュー表示開始までの時間(sec)
+(setq ac-auto-show-menu 0.1)
+
 ;;; @ popwin.el
 ;; (auto-install-from-url "https://raw.github.com/m2ym/popwin-el/master/popwin.el")
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 (define-key global-map (kbd "C-x p") 'popwin:display-last-buffer)
-;; (push '(dired-mode :position top :height 12) popwin:special-display-config) ; tabbarとの競合回避
+;; tabbarとの競合回避
+;; (push '(dired-mode :position top :height 12) popwin:special-display-config) 
 
 ;;; @ tabbar.el
 ;; (M-x auto-install-from-emacswiki tabbar.el)
@@ -330,18 +315,29 @@ The current buffer and buffers matches `my-tabbar-displayed-buffers' are always 
         tabs
       (cons cur-buf tabs))))
 (setq tabbar-buffer-list-function 'my-tabbar-buffer-list)
-;; タブ移動キーバインド
+;; キーバインド
 (global-set-key (kbd "M-n") 'tabbar-forward-tab)
 (global-set-key (kbd "M-p") 'tabbar-backward-tab)
-;; タブモードのオン/オフをトグル
 (global-set-key (kbd "M-4") 'tabbar-mode)
 
 ;;; @ recentf-ext
 ;; (M-x auto-install-from-emacswiki recentf-ext.el)
-;; 最近開いたファイル/ディレクトリの一覧を使用可能に
 (setq recentf-max-saved-items 100)
 (require 'recentf-ext)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+;;------------------------------
+;; 以下, auto-install.elが絡んだ設定
+;;------------------------------
+;;; パスを通す
+(setq load-path (cons "~/dotfiles/emacs.d/elisp" load-path))
+
+;;; @ auto-install.el
+;; download from (http://www.emacswiki.org/emacs/download/auto-install.el)
+;; (require 'auto-install)
+;; (setq auto-install-directory "~/dotfiles/emacs.d/elisp/")
+;; (auto-install-update-emacswiki-package-name t)
+;; (auto-install-compatibility-setup) 
 
 ;;; @ rotate.el
 ;; https://raw.github.com/daic-h/emacs-rotate/master/rotate.el
