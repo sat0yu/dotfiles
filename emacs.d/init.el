@@ -119,7 +119,7 @@
 (icomplete-mode 1)
 
 ;;; C-x bでミニバッファにバッファ候補を表示
-(iswitchb-mode t)
+;;(iswitchb-mode t)
 
 ;;; 履歴
 ;; 履歴数を大きくする
@@ -227,9 +227,21 @@
 ;;   (package-install-from-buffer  (package-buffer-info) 'single))
 (require 'melpa)
 
-;;; @ anything.el
-(require 'anything-startup)
-(global-set-key (kbd "C-x ;") 'anything)
+;;; @ helm
+(require 'helm-config)
+(when (require 'helm-config nil t)
+  (global-set-key (kbd "C-x ;") 'helm-mini)
+  (global-set-key (kbd "C-r") 'helm-resume)
+  (global-set-key (kbd "M-s") 'helm-occur)
+  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+  (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+
+  ;;(helm-mode 1)
+)
+;; helmの色を変更
+(custom-set-faces
+ '(helm-selection ((t (:background "magenta" :underline t)))))
+
 
 ;;; @ expand-region.el
 (require 'expand-region)
@@ -324,12 +336,6 @@ The current buffer and buffers matches `my-tabbar-displayed-buffers' are always 
 (global-set-key (kbd "M-p") 'tabbar-backward-tab)
 (global-set-key (kbd "M-4") 'tabbar-mode)
 
-;;; @ recentf-ext
-;; (M-x auto-install-from-emacswiki recentf-ext.el)
-(setq recentf-max-saved-items 100)
-(require 'recentf-ext)
-(global-set-key (kbd "C-x C-r") 'recentf-open-files)
-
 ;;------------------------------
 ;; 以下, auto-install.elが絡んだ設定
 ;;------------------------------
@@ -346,5 +352,5 @@ The current buffer and buffers matches `my-tabbar-displayed-buffers' are always 
 ;;; @ rotate.el
 ;; https://raw.github.com/daic-h/emacs-rotate/master/rotate.el
 (require 'rotate)
-(global-set-key (kbd "C-r") 'rotate-layout)
+(global-set-key (kbd "C-x C-r") 'rotate-layout)
 (global-set-key (kbd "C-x C-o") 'rotate-window)
