@@ -119,7 +119,7 @@
 (icomplete-mode 1)
 
 ;;; C-x bでミニバッファにバッファ候補を表示
-;;(iswitchb-mode t)
+(iswitchb-mode t)
 
 ;;; 履歴
 ;; 履歴数を大きくする
