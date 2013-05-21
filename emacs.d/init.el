@@ -336,6 +336,9 @@ The current buffer and buffers matches `my-tabbar-displayed-buffers' are always 
 (global-set-key (kbd "M-p") 'tabbar-backward-tab)
 (global-set-key (kbd "M-4") 'tabbar-mode)
 
+;;; @ all-ext.el
+(require 'all-ext)
+
 ;;------------------------------
 ;; 以下, auto-install.elが絡んだ設定
 ;;------------------------------
