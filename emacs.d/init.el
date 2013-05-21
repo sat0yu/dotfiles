@@ -339,6 +339,14 @@ The current buffer and buffers matches `my-tabbar-displayed-buffers' are always 
 ;;; @ all-ext.el
 (require 'all-ext)
 
+;;; @ jedi.el
+;; pipでjediおよびepcをインストールしておくこと
+;; 動作が不安定なのでコメントアウト
+;; (require 'jedi)
+;; (add-hook 'python-mode-hook 'jedi:ac-setup)
+;; (setq jedi:setup-keys t)
+;; (setq jedi:complete-on-dot t)
+
 ;;------------------------------
 ;; 以下, auto-install.elが絡んだ設定
 ;;------------------------------
