@@ -163,6 +163,10 @@
   (interactive "F")
   (set-buffer (find-file (concat "/sudo::" file))))
 
+;; Activate python highlighting for PYX and PPL files
+(add-to-list 'auto-mode-alist '("\\.pyx\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.ppl\\'" . python-mode))
+
 ;;------------------------------
 ;; 標準機能
 ;;------------------------------
