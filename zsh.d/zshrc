@@ -411,6 +411,9 @@ if [ -n "$DISPLAY" ]; then
     preexec_functions=($preexec_functions update_title)
 fi
 
+## homebrewでインストールしたプログラムを優先する
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
 ## OS XにおいてGNUPLOTを使用可能にする(x11環境)
 export GNUTERM=x11
 
