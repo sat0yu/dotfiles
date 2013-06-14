@@ -126,8 +126,6 @@
 (setq history-length 10000)
 ;; ミニバッファの履歴を保存する
 (savehist-mode 1)
-;; 最近開いたファイルを保存する数を増やす
-(setq recentf-max-saved-items 10000)
 
 ;;; リージョンの大文字小文字変換を有効にする。
 ;; C-x C-u -> upcase
@@ -235,6 +233,7 @@
 (require 'helm-config)
 (when (require 'helm-config nil t)
   (global-set-key (kbd "C-x ;") 'helm-mini)
+  (global-set-key (kbd "C-x r") 'helm-recentf)
   (global-set-key (kbd "C-r") 'helm-resume)
   (global-set-key (kbd "M-s") 'helm-occur)
   (global-set-key (kbd "M-y") 'helm-show-kill-ring)
@@ -263,6 +262,12 @@
 (setq ac-delay 0.1)
 ;; 補完メニュー表示開始までの時間(sec)
 (setq ac-auto-show-menu 0.1)
+
+;;; @ recentf-ext
+;; (M-x auto-install-from-emacswiki recentf-ext.el)
+;; 最近開いたファイル/ディレクトリの一覧を使用可能に
+(setq recentf-max-saved-items 10000)
+(require 'recentf-ext)
 
 ;;; @ popwin.el
 ;; (auto-install-from-url "https://raw.github.com/m2ym/popwin-el/master/popwin.el")
@@ -351,18 +356,18 @@ The current buffer and buffers matches `my-tabbar-displayed-buffers' are always 
 ;; (setq jedi:setup-keys t)
 ;; (setq jedi:complete-on-dot t)
 
-;;------------------------------
-;; 以下, auto-install.elが絡んだ設定
-;;------------------------------
-;;; パスを通す
-(setq load-path (cons "~/dotfiles/emacs.d/elisp" load-path))
-
 ;;; @ auto-install.el
 ;; download from (http://www.emacswiki.org/emacs/download/auto-install.el)
 ;; (require 'auto-install)
 ;; (setq auto-install-directory "~/dotfiles/emacs.d/elisp/")
 ;; (auto-install-update-emacswiki-package-name t)
 ;; (auto-install-compatibility-setup) 
+
+;;------------------------------
+;; 以下, auto-install.elが絡んだ設定
+;;------------------------------
+;;; パスを通す
+(setq load-path (cons "~/dotfiles/emacs.d/elisp" load-path))
 
 ;;; @ rotate.el
 ;; https://raw.github.com/daic-h/emacs-rotate/master/rotate.el
