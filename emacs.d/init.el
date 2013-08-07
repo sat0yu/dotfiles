@@ -348,6 +348,13 @@ The current buffer and buffers matches `my-tabbar-displayed-buffers' are always 
 ;;; @ all-ext.el
 (require 'all-ext)
 
+;;; @ guide-key
+(require 'guide-key)
+;;(setq guide-key/guide-key-sequence '("C-x" "C-c" "M-x"))
+(setq guide-key/guide-key-sequence '("C-c" "M-x"))
+(setq guide-key/popup-window-position 'bottom)
+(guide-key-mode 1)
+
 ;;; @ jedi.el
 ;; pipでjediおよびepcをインストールしておくこと
 ;; 動作が不安定なのでコメントアウト
