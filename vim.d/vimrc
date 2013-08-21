@@ -1,0 +1,42 @@
+" エンコード
+set encoding=utf8
+" ファイルエンコード
+set fileencoding=utf-8
+" シンタックスハイライト
+syntax on
+
+" ステータスバーを常に表示
+set laststatus=2
+set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
+" カーソル行をアンダーライン
+set cursorline
+" 行番号を表示
+set number
+" 検索結果をハイライト
+set hlsearch
+" 不可視文字を表示
+set list
+set listchars=trail:-,extends:>,precedes:<,nbsp:%,eol:$,tab:▸\ 
+" タブ幅を指定
+set tabstop=4
+set shiftwidth=4
+" 対応括弧をハイライト表示する
+set showmatch
+" 対応括弧の表示秒数を3秒にする
+set matchtime=3
+" インサートモード時にバックスペースを使う
+set backspace=indent,eol,start
+
+" インサートモードのキーバインド
+inoremap <c-a> <home>
+inoremap <c-e> <end>
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+inoremap <c-h> <left>
+inoremap <c-l> <right>
+inoremap <silent> <C-f> <S-Right>
+inoremap <silent> <C-b> <S-Left>
+inoremap <silent> <c-d> <c-g>u<Del>
+inoremap <silent> <c-g> <c-g>u<BS>
+inoremap <silent> <Tab> <c-g>u<c-t>
+inoremap <silent> <S-Tab> <c-g>u<c-d>
