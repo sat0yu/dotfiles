@@ -13,6 +13,7 @@ NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'itchyny/lightline.vim'
 
 filetype plugin on
 filetype indent on
@@ -25,10 +26,11 @@ set encoding=utf8
 set fileencoding=utf-8
 " シンタックスハイライト
 syntax on
-
+" 256色表示
+set t_Co=256
 " ステータスバーを常に表示
 set laststatus=2
-set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
+"set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
 " カーソル行をアンダーライン
 set cursorline
 " 行番号を表示
