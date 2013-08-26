@@ -53,6 +53,8 @@ set listchars=trail:-,extends:>,precedes:<,nbsp:%,eol:$,tab:▸\
 " タブ幅を指定
 set tabstop=4
 set shiftwidth=4
+" タブを半角スペースに変換
+set expandtab
 " 対応括弧をハイライト表示する
 set showmatch
 " 対応括弧の表示秒数を3秒にする
