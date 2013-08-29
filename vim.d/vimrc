@@ -70,6 +70,12 @@ if has('vim_starting') &&  file_name == ""
 endif
 
 
+" ----- lightline settings -----
+let g:lightline = {
+    \ 'colorscheme': 'solarized'
+    \ }
+
+
 " ----- Neocomplcache settings -----
 " Neocomplcacheの有効化
 let g:neocomplcache_enable_at_startup = 1
