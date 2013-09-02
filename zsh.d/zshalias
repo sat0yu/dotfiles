@@ -3,6 +3,7 @@ alias -g G='| grep'
 alias -g H='| head'
 alias -g T='| tail'
 
+alias v="vim"
 alias emacs="emacs -nw"
 alias ls="la"
 
