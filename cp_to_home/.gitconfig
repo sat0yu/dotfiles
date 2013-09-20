@@ -9,5 +9,5 @@
 	stat = status
 	br = branch
 [core]
-	editor = emacs
+	editor = vim
 	excludesfile = ~/.gitignore_global
