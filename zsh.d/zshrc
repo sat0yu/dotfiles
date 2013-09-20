@@ -418,8 +418,14 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export GNUTERM=x11
 
 ## z
+# https://github.com/rupa/z.git
 _Z_CMD=j
-source /usr/local/etc/profile.d/z.sh
+z_files=(/usr/local/etc/profile.d/z.sh(N-.)
+             ~/.zsh/z.sh(N-.))
+for z_file in ${z_files}; do
+    source "${z_file}"
+    break
+done
 precmd() {
     _z --add "$(pwd -P)"
 }
