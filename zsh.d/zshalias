@@ -25,3 +25,13 @@ alias unico="ssh yusuke_sato@unico.shino.ecei.tohoku.ac.jp"
 alias deco="ssh yusuke_sato@deco.shino"
 
 alias -s py=python
+
+case ${OSTYPE} in
+    darwin*)
+        # Mac
+        alias sed="gsed"
+        ;;
+    linux*)
+        # Linux
+        ;;
+esac
