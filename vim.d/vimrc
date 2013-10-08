@@ -66,11 +66,17 @@ vnoremap < <gv
 vnoremap > >gv
 
 
+" ----- key-bind settings -----
+" ESCを2回入力で検索時のハイライトを解除
+nnoremap <ESC><ESC> :nohlsearch<CR>
+
+
 " ----- NERDTree settings -----
 let file_name = expand("%")
 if has('vim_starting') &&  file_name == ""
 	autocmd VimEnter * NERDTree ./
 endif
+nnoremap <C-e> :NERDTreeToggle<CR>
 
 
 " ----- lightline settings -----
