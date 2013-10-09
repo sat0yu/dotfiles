@@ -1,5 +1,7 @@
 # -*- sh -*-
 
+## sudoユーザーに環境変数を引き継ぐ
+alias sudo='sudo env PATH=$PATH'
 ## pipのダウンロードキャッシュ
 export PIP_DOWNLOAD_CACHE=${HOME}/.pip_cache
 ## パッケージをvirtualenvにインストール
