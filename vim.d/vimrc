@@ -61,6 +61,14 @@ set showmatch
 set matchtime=3
 " インサートモード時にバックスペースを使う
 set backspace=indent,eol,start
+" 選択した範囲のインデントサイズを連続変更
+vnoremap < <gv
+vnoremap > >gv
+
+
+" ----- key-bind settings -----
+" ESCを2回入力で検索時のハイライトを解除
+nnoremap <ESC><ESC> :nohlsearch<CR>
 
 
 " ----- NERDTree settings -----
@@ -68,6 +76,7 @@ let file_name = expand("%")
 if has('vim_starting') &&  file_name == ""
 	autocmd VimEnter * NERDTree ./
 endif
+nnoremap <C-e> :NERDTreeToggle<CR>
 
 
 " ----- lightline settings -----
