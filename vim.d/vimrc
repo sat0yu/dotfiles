@@ -14,6 +14,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'mhinz/vim-startify'
 
 filetype plugin on
 filetype indent on
@@ -73,10 +74,11 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 
 " ----- NERDTree settings -----
 let file_name = expand("%")
-if has('vim_starting') &&  file_name == ""
-	autocmd VimEnter * NERDTree ./
-endif
 nnoremap <C-e> :NERDTreeToggle<CR>
+" vim起動時にツリーを表示する
+"if has('vim_starting') &&  file_name == ""
+"	autocmd VimEnter * NERDTree ./
+"endif
 
 
 " ----- lightline settings -----
@@ -88,12 +90,27 @@ let g:lightline = {
 " ----- Neocomplcache settings -----
 " Neocomplcacheの有効化
 let g:neocomplcache_enable_at_startup = 1
-" 大文字が入力されるまで、大文字と小文字を区別しない
-let g:neocomplcache_enable_smart_case = 1
-" アンダーバー区切りの補完を有効化
-let g:neocomplcache_enable_underbar_completion = 1
+" 入力に大文字が入力されていたら、大文字小文字の区別をする
+let g:neocomplcache_enable_smart_case = 0
+" アンダーバー区切りの補完を無効化(有効にすると重い)
+let g:neocomplcache_enable_underbar_completion = 0
+" 大文字小文字区切りの曖昧検索を無効化(有効にすると重い)
+let g:neocomplcache_enable_camel_case_completion = 0
 " キャッシュする最小文字列長
 let g:neocomplcache_min_syntax_length = 4
+
+
+" ----- startify settings -----
+" startifyのヘッダー部分に表示する文字列を設定する(dateコマンドを実行して日付を設定している)
+let g:startify_custom_header = map(split(system('date'), '\n'), '"   ". v:val') + ['','']
+" デフォルトだと、最近使ったファイルの先頭は数字なので、使用するアルファベットを指定
+let g:startify_custom_indices = ['f', 'g', 'h', 'r', 'i', 'o', 'b']
+"よく使うファイルをブックマークとして登録しておく
+let g:startify_bookmarks = [
+        \ '~/dotfiles/vim.d/vimrc',
+        \ '~/.subversion/config',
+        \ '~/.gitconfig',
+        \ ]
 
 
 " ----- window operation settings -----
