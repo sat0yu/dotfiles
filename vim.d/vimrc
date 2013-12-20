@@ -15,6 +15,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'mhinz/vim-startify'
+NeoBundle 'taglist.vim'
 
 filetype plugin on
 filetype indent on
@@ -111,6 +112,22 @@ let g:startify_bookmarks = [
         \ '~/.subversion/config',
         \ '~/.gitconfig',
         \ ]
+
+
+" ----- taglist settings -----
+" SHOULD EXEC A ONE-LINER BELOW
+" % brew install ctags
+
+" ctagsのコマンド
+let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+" 現在表示中のファイルのみのタグしか表示しない
+let Tlist_Show_One_File = 1
+" 右側にtag listのウインドを表示する
+let Tlist_Use_Right_Window = 1
+" taglistのウインドウだけならVimを閉じる
+let Tlist_Exit_OnlyWindow = 1
+" \lでtaglistウインドウを開いたり閉じたり出来るショートカット
+nnoremap <silent> <leader>l :TlistToggle<CR>
 
 
 " ----- window operation settings -----
