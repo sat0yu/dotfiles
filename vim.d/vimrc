@@ -16,6 +16,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'taglist.vim'
+NeoBundle 'terryma/vim-expand-region'
 
 filetype plugin on
 filetype indent on
@@ -128,6 +129,11 @@ let Tlist_Use_Right_Window = 1
 let Tlist_Exit_OnlyWindow = 1
 " \lでtaglistウインドウを開いたり閉じたり出来るショートカット
 nnoremap <silent> <leader>l :TlistToggle<CR>
+
+
+" ---- vim-expand-region settings -----
+map K <Plug>(expand_region_expand)
+map J <Plug>(expand_region_shrink)
 
 
 " ----- window operation settings -----
