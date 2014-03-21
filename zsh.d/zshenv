@@ -41,8 +41,7 @@ else
 fi
 
 # エディタの設定
-## emacsを使う。
-export EDITOR=emacs
+export EDITOR=vim
 
 # リダイレクトをセキュアに実行
 set -o noclobber

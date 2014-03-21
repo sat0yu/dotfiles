@@ -6,8 +6,8 @@ export LC_ALL=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 
 # キーバインド
-## Emacsキーバインドを使う。
-bindkey -e
+## viキーバインドを使う。
+bindkey -v
 
 # ディレクトリ移動
 ## ディレクトリ名だけでcdする。
