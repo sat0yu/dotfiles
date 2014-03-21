@@ -307,28 +307,6 @@ WORDCHARS=${WORDCHARS:s,/,,}
 WORDCHARS="${WORDCHARS}|"
 
 
-# alias
-## ページャーを使いやすくする。
-### grep -r def *.rb L -> grep -r def *.rb |& lv
-alias -g L="|& $PAGER"
-## grepを使いやすくする。
-alias -g G='| grep'
-## 後はおまけ。
-alias -g H='| head'
-alias -g T='| tail'
-alias -g S='| sed'
-
-## 完全に削除。
-alias rr="command rm -rf"
-## ファイル操作を確認する。
-alias rm="rm -i"
-alias cp="cp -i"
-alias mv="mv -i"
-
-## pushd/popdのショートカット。
-alias pd="pushd"
-alias po="popd"
-
 ## lsとpsの設定
 ### ls: できるだけGNU lsを使う。
 ### ps: 自分関連のプロセスのみ表示。
@@ -356,21 +334,29 @@ case $(uname) in
 	alias ps="ps -fU$(whoami) --forest"
 	;;
 esac
+alias ls="la"
 
+
+# 共通alias
+alias -g L="|& $PAGER"
+alias -g G='| grep'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g S='| sed'
+## 完全に削除
+alias rr="command rm -rf"
+## ファイル操作を確認する
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+## pushd/popdのショートカット
+alias pd="pushd"
+alias po="popd"
 ## grepの表示を改善
-### 2013-01-24
 alias grep="grep -n --color=auto"
-
-## Emacsのショートカット。
-### 2013-02-13
-alias e="emacs -nw"
-### -nw: ターミナル内でEmacsを起動する。
-### 2011-11-06
-alias enw="emacs -nw"
-
-## exitのショートカット。
-### 2011-11-06
+## exitのショートカット
 alias x="exit"
+
 
 ## カスタムaliasの設定
 ### ~/zsh.d/zshalias → ~/zshaliasの順に探して
