@@ -8,6 +8,8 @@ export LC_CTYPE=ja_JP.UTF-8
 # キーバインド
 ## viキーバインドを使う。
 bindkey -v
+bindkey "^P" up-line-or-history
+bindkey "^N" down-line-or-history
 
 # ディレクトリ移動
 ## ディレクトリ名だけでcdする。
