@@ -19,6 +19,8 @@ alias dvi="dvipdfmx"
 
 alias arena="sh ~/dotfiles/src/topcoder.sh"
 
+alias dash="open dash://"
+
 alias startvm="VBoxManage startvm ubuntu --type=headless"
 alias pausevm="VBoxManage controlvm ubuntu pause"
 alias resumevm="VBoxManage controlvm ubuntu resume"
