@@ -109,6 +109,13 @@ let g:neocomplcache_enable_underbar_completion = 0
 let g:neocomplcache_enable_camel_case_completion = 0
 " キャッシュする最小文字列長
 let g:neocomplcache_min_syntax_length = 4
+" tabで補完候補の選択を行う
+inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+" 補完候補の中から、共通する部分を補完
+inoremap <expr><C-l>   neocomplcache#complete_common_string()
+" 選択している候補をキャンセルし、ポップアップを閉じます
+inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 
 " ----- startify settings -----
@@ -170,5 +177,3 @@ inoremap <silent> <C-f> <S-Right>
 inoremap <silent> <C-b> <S-Left>
 inoremap <silent> <c-d> <c-g>u<Del>
 inoremap <silent> <c-g> <c-g>u<BS>
-inoremap <silent> <Tab> <c-g>u<c-t>
-inoremap <silent> <S-Tab> <c-g>u<c-d>
