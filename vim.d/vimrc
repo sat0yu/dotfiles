@@ -100,6 +100,11 @@ let g:lightline = {
     \ }
 
 
+" ----- Syntastic settings -----
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
+
+
 " ----- Neocomplcache settings -----
 " Neocomplcacheの有効化
 let g:neocomplcache_enable_at_startup = 1
