@@ -142,7 +142,9 @@ nnoremap s= <C-w>=
 nnoremap st :<C-u>tabnew<CR>
 nnoremap sn gt
 nnoremap sp gT
-
+" ノーマルモード時だけ ; と : を入れ替える(for MBA)
+"nnoremap ; :
+"nnoremap : ;
 
 " ----- Unite settings -----
 " 入力モードで開始する
