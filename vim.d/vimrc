@@ -26,6 +26,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'taglist.vim'
 NeoBundle 'terryma/vim-expand-region'
@@ -176,8 +177,28 @@ nnoremap <C-e> :NERDTreeToggle<CR>
 
 " ----- lightline settings -----
 let g:lightline = {
-    \ 'colorscheme': 'solarized'
+    \ 'colorscheme': 'solarized',
+    \ 'active': {
+    \   'left': [
+    \       ['mode', 'paste'],
+    \       ['readonly', 'filename', 'modified', 'anzu']
+    \   ]
+    \ },
+    \ 'component_function': {
+    \   'anzu': 'anzu#search_status'
     \ }
+    \ }
+
+
+" ----- vim-anzusettings -----
+nmap n <Plug>(anzu-n)
+nmap N <Plug>(anzu-N)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
+augroup vim-anzu
+    autocmd!
+    autocmd CursorHold,CursorHoldI,WinLeave,TabLeave * call anzu#clear_search_status()
+augroup END
 
 
 " ----- Syntastic settings -----
