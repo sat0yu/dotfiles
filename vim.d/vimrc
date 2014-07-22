@@ -99,6 +99,39 @@ vnoremap > >gv
 nmap n nzz
 nmap N Nzz
 
+" ----- function keys -----
+command! Run call s:Run()
+nnoremap <F5> :Run<CR>
+function! s:Run()
+    let e = expand("%:e")
+    if e == "c"
+        :Gcc
+    endif
+    if e == "cpp"
+        :Cplus
+    endif
+    if e == "py"
+        :Python
+    endif
+endfunction
+
+command! Python call s:Python()
+function! s:Python()
+    :!python %
+endfunction
+
+command! Gcc call s:Gcc()
+function! s:Gcc()
+    :!gcc % -o %:r.out
+    :!./%:r.out
+endfunction
+
+command! Cplus call s:Cplus()
+function! s:Cplus()
+    :!g++ % -o %:r.out
+    :!./%:r.out
+endfunction
+
 
 " ----- key-binds in insert mode -----
 inoremap <c-a> <home>
