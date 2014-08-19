@@ -11,13 +11,20 @@ current_dir=`pwd`
 #brew update
 #brew upgrade
 common=( \
-    'zsh' 'wget' 'ctags' 'vim' 'lv' 'tmux' 'tig' 'gnu-sed' \
-    'ack' 'colordiff' 'nkf' 'valgrind' 'z' 'mosh' 'mp3gain' \
+    'zsh' 'wget' 'ctags' 'vim' 'lv' 'tmux' 'tig' 'gnu-sed' 'latex-mk' \
+    'ack' 'colordiff' 'nkf' 'valgrind' 'z' 'mosh' 'mp3gain' 'ghc' 'cabal-install' \
     'subversion --unicode-path' \
     'weechat --with-ruby --with-python --with-perl' \
 )
 #brew install ${formulas[@]}
 
+# ------------------------------
+# Unix best practices
+# ------------------------------
+# avoid misoperations such as 'rm *' at own home directory
+touch i
+chmod 0 i
+mv i ~/-i
 
 # ------------------------------
 # tex
