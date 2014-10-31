@@ -45,3 +45,6 @@ export EDITOR=vim
 
 # リダイレクトをセキュアに実行
 set -o noclobber
+
+# haskell cabalコマンドでインストールした実行ファイル群へパスを通す
+export PATH="$HOME/Library/Haskell/bin:$PATH"
