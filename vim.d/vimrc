@@ -29,6 +29,7 @@ NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'taglist.vim'
 NeoBundle 'terryma/vim-expand-region'
+NeoBundle "git://github.com/tyru/caw.vim.git"
 
 filetype plugin on
 filetype indent on
@@ -301,3 +302,8 @@ call submode#enter_with('tabmove', 'n', '', 'sn', 'gt')
 call submode#enter_with('tabmove', 'n', '', 'sp', 'gT')
 call submode#map('tabmove', 'n', '', 'n', 'gt')
 call submode#map('tabmove', 'n', '', 'p', 'gT')
+
+
+" ---- caw.vim -----
+nmap C <Plug>(caw:i:toggle)
+vmap C <Plug>(caw:i:toggle)
