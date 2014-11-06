@@ -4,32 +4,47 @@
 set nocompatible
 filetype off
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle'))
-endif
+" ----- chech the condition for neocomplete -----
+function! s:meet_neocomplete_requirements()
+    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+endfunction
 
-NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-    \ 'windows' : 'make -f make_mingw32.mak',
-    \ 'cygwin' : 'make -f make_cygwin.mak',
-    \ 'mac' : 'make -f make_mac.mak',
-    \ 'unix' : 'make -f make_unix.mak',
-  \ },
-\ }
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'kana/vim-submode'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'osyo-manga/vim-anzu'
-NeoBundle 'mhinz/vim-startify'
-NeoBundle 'taglist.vim'
-NeoBundle 'terryma/vim-expand-region'
-NeoBundle "git://github.com/tyru/caw.vim.git"
+" ----- plugins depending on Neobundle -----
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim
+    call neobundle#begin(expand('~/.vim/bundle/'))
+
+    if s:meet_neocomplete_requirements()
+        NeoBundle 'Shougo/neocomplete.vim'
+        NeoBundleFetch 'Shougo/neocomplcache.vim'
+    else
+        NeoBundleFetch 'Shougo/neocomplete.vim'
+        NeoBundle 'Shougo/neocomplcache.vim'
+    endif
+
+    NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+        \ 'windows' : 'make -f make_mingw32.mak',
+        \ 'cygwin' : 'make -f make_cygwin.mak',
+        \ 'mac' : 'make -f make_mac.mak',
+        \ 'unix' : 'make -f make_unix.mak',
+      \ },
+    \ }
+    NeoBundle 'Shougo/vimshell'
+    NeoBundle 'Shougo/unite.vim'
+    NeoBundle 'Shougo/neomru.vim'
+    NeoBundle 'kana/vim-submode'
+    NeoBundle 'scrooloose/syntastic'
+    NeoBundle 'scrooloose/nerdtree'
+    NeoBundle 'itchyny/lightline.vim'
+    NeoBundle 'osyo-manga/vim-anzu'
+    NeoBundle 'mhinz/vim-startify'
+    NeoBundle 'taglist.vim'
+    NeoBundle 'terryma/vim-expand-region'
+    NeoBundle 'tyru/caw.vim.git'
+
+    call neobundle#end()
+endif
 
 filetype plugin on
 filetype indent on
@@ -261,20 +276,41 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
 
-" ----- Neocomplcache settings -----
-" Neocomplcacheの有効化
-let g:neocomplcache_enable_at_startup = 1
-" 入力に大文字が入力されていたら、大文字小文字の区別をする
-let g:neocomplcache_enable_smart_case = 0
-" アンダーバー区切りの補完を無効化(有効にすると重い)
-let g:neocomplcache_enable_underbar_completion = 0
-" 大文字小文字区切りの曖昧検索を無効化(有効にすると重い)
-let g:neocomplcache_enable_camel_case_completion = 0
-" キャッシュする最小文字列長
-let g:neocomplcache_min_syntax_length = 4
+" ----- Neocomplete and Neocomplcache settings -----
+if s:meet_neocomplete_requirements()
+    " Neocompleteの有効化
+    let g:neocomplete#enable_at_startup = 1
+    " 入力に大文字が入力されていたら、大文字小文字の区別をする
+    let g:neocomplete#enable_smart_case = 0
+    " あいまい補完を有効化
+    let g:neocomplete#enable_fuzzy_completion = 1
+    " シンタックスファイル中で補完対象となる最小長．初期値は4
+    let g:neocomplete#min_syntax_length = 4
+    " 補完キーワード
+    if !exists('g:neocomplete#keyword_patterns')
+        let g:neocomplete#keyword_patterns = {}
+    endif
+    let g:neocomplete#keyword_patterns._ = '\h\w*'
+    " Enterで一番先頭の候補を選んで補完完了
+    inoremap <expr><CR> pumvisible() ? "\<C-n>" . neocomplete#close_popup() : "<CR>"
+else
+    " Neocomplcacheの有効化
+    let g:neocomplcache_enable_at_startup = 1
+    " 入力に大文字が入力されていたら、大文字小文字の区別をする
+    let g:neocomplcache_enable_smart_case = 0
+    " アンダーバー区切りの補完を無効化(有効にすると重い)
+    let g:neocomplcache_enable_underbar_completion = 0
+    " 大文字小文字区切りの曖昧検索を無効化(有効にすると重い)
+    let g:neocomplcache_enable_camel_case_completion = 0
+    " シンタックスファイル中で補完対象となる最小長．初期値は4
+    let g:neocomplcache_min_syntax_length = 4
+    " Enterで一番先頭の候補を選んで補完完了
+    inoremap <expr><CR> pumvisible() ? "\<C-n>" . neocomplcache#close_popup() : "<CR>"
+endif
 " tabで補完候補の選択を行う
 inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
 
 " ----- startify settings -----
 " startifyのヘッダー部分に表示する文字列を設定する(dateコマンドを実行して日付を設定している)
