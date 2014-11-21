@@ -105,33 +105,56 @@ nnoremap <F5> :Run<CR>
 function! s:Run()
     let e = expand("%:e")
     if e == "c"
-        :Gcc
+        :RunC
     endif
     if e == "cpp"
-        :Cplus
+        :RunCplus
     endif
     if e == "py"
-        :Python
+        :RunPython
     endif
 endfunction
 
-command! Python call s:Python()
-function! s:Python()
-    :!python %
+command! RunPython call s:RunPython()
+function! s:RunPython()
+    :!/usr/local/bin/python %
 endfunction
 
-command! Gcc call s:Gcc()
-function! s:Gcc()
+command! RunC call s:RunC()
+function! s:RunC()
     :!gcc % -o %:r.out
     :!./%:r.out
 endfunction
 
-command! Cplus call s:Cplus()
-function! s:Cplus()
+command! RunCplus call s:RunCplus()
+function! s:RunCplus()
     :!g++ % -o %:r.out
     :!./%:r.out
 endfunction
 
+command! Debug call s:Debug()
+nnoremap <S-F5> :Debug<CR>
+function! s:Debug()
+    let e = expand("%:e")
+    if e == "c"
+        :DebugC
+    endif
+    if e == "cpp"
+        :DebugCplus
+    endif
+endfunction
+
+command! DebugC call s:DebugC()
+function! s:DebugC()
+    :!gcc % -g3 -O0 -Wall -o %:r.out
+    :!lldb ./%:r.out
+endfunction
+
+command! DebugCplus call s:DebugCplus()
+function! s:DebugCplus()
+    :!g++ % -g3 -O0 -Wall -o %:r.out
+    :!lldb ./%:r.out
+endfunction
 
 " ----- key-binds in insert mode -----
 inoremap <c-a> <home>
