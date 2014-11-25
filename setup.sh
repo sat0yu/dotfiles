@@ -11,8 +11,9 @@ current_dir=`pwd`
 #brew update
 #brew upgrade
 common=( \
-    'zsh' 'wget' 'ctags' 'vim' 'lv' 'tmux' 'tig' 'gnu-sed' 'latex-mk' \
-    'ack' 'colordiff' 'nkf' 'valgrind' 'z' 'mosh' 'mp3gain' 'ghc' 'cabal-install' \
+    'zsh' 'wget' 'ctags' 'lua' 'lv' 'tmux' 'tig' 'gnu-sed' \
+    'ack' 'colordiff' 'nkf' 'valgrind' 'z' 'mosh' 'mp3gain' \
+    'vim --devel --with-lua' \
     'subversion --unicode-path' \
     'weechat --with-ruby --with-python --with-perl' \
 )
@@ -29,8 +30,17 @@ mv i ~/-i
 # ------------------------------
 # tex
 # ------------------------------
-tex=('ghostscript' 'imagemagick')
+tex=('ghostscript' 'imagemagick' 'latex-mk')
 #brew install ${tex[@]}
+
+
+# ------------------------------
+# pandoc
+# ------------------------------
+pandoc=('ghc' 'cabal-install')
+#brew install ${pandoc[@]}
+#cabal update
+#cabal install pandoc
 
 
 # ------------------------------
