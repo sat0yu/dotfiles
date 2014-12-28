@@ -99,10 +99,17 @@ set shiftwidth=4
 set expandtab
 " 対応括弧をハイライト表示する
 set showmatch
-" 対応括弧の表示秒数を3秒にする
-set matchtime=3
+" 対応括弧の表示秒数を0.1秒にする
+set matchtime=1
 " インサートモード時にバックスペースを使う
 set backspace=indent,eol,start
+" 長い行でも@で省略せずに表示
+set display=lastline
+" 補完ポップアップの高さ
+set pumheight=10
+" コマンドモードでも補完
+set wildmode=longest:full
+set wildmenu
 " ファイルを開いたときに前回の編集箇所に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 " ESCを2回入力で検索時のハイライトを解除
@@ -113,6 +120,8 @@ vnoremap > >gv
 " 検索語が画面中央にくるようにする
 nmap n nzz
 nmap N Nzz
+" Yの動作をDと揃える(行末までヤンク)
+nnoremap Y y$
 
 " ----- function keys -----
 command! Run call s:Run()
