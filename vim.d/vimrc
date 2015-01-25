@@ -137,6 +137,14 @@ function! s:Run()
     if e == "py"
         :RunPython
     endif
+    if e == "scala"
+        :RunScala
+    endif
+endfunction
+
+command! RunScala call s:RunScala()
+function! s:RunScala()
+    :!/usr/local/bin/scala %
 endfunction
 
 command! RunPython call s:RunPython()
