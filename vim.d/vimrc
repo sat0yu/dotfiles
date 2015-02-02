@@ -39,7 +39,7 @@ if has('vim_starting')
     NeoBundle 'itchyny/lightline.vim'
     NeoBundle 'osyo-manga/vim-anzu'
     NeoBundle 'mhinz/vim-startify'
-    NeoBundle 'taglist.vim'
+    NeoBundle 'majutsushi/tagbar'
     NeoBundle 'terryma/vim-expand-region'
     NeoBundle 'tyru/caw.vim.git'
 
@@ -253,6 +253,30 @@ nnoremap <silent> ,ua :<C-u>Unite -buffer-name=files buffer file_mru bookmark fi
 nnoremap <silent> ,ug :<C-u>Unite grep:%:-iHRn<CR>
 
 
+" ----- QuickFix settings -----
+" vimgrep, grepをQuickFixで表示
+autocmd QuickFixCmdPost *grep if len(getqflist()) != 0 | cwindow | endif
+" <C-l>でQuickFix表示をトグル
+command! ToggleQuickFix call s:ToggleQuickFix()
+function! s:ToggleQuickFix()
+    let _ = winnr('$')
+    cclose
+    if _ == winnr('$')
+        cwindow
+    endif
+endfunction
+nnoremap <silent> <C-l> :ToggleQuickFix<CR>
+" :q実行時にQuickFixだけ残っている場合には閉じて終了
+autocmd WinEnter * call s:QuickFix_Exit_OnlyWindow()
+function s:QuickFix_Exit_OnlyWindow()
+    if winnr('$') == 1
+        if (getbufvar(winbufnr(0), '&buftype')) == 'quickfix'
+            quit
+        endif
+    endif
+endfunction
+
+
 " ----- NERDTree settings -----
 let file_name = expand("%")
 nnoremap <C-e> :NERDTreeToggle<CR>
@@ -290,7 +314,18 @@ augroup END
 
 " ----- Syntastic settings -----
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
+let g:syntastic_auto_loc_list=0
+let g:syntastic_always_populate_loc_list=1
+" <C-k>でLocationList表示をトグル
+command! ToggleLocationList call s:ToggleLocationList()
+function! s:ToggleLocationList()
+    let _ = winnr('$')
+    lclose
+    if _ == winnr('$')
+        Errors
+    endif
+endfunction
+nnoremap <silent> <C-k> :ToggleLocationList<CR>
 
 
 " ----- Neocomplete and Neocomplcache settings -----
@@ -310,6 +345,16 @@ if s:meet_neocomplete_requirements()
     let g:neocomplete#keyword_patterns._ = '\h\w*'
     " Enterで一番先頭の候補を選んで補完完了
     inoremap <expr><CR> pumvisible() ? "\<C-n>" . neocomplete#close_popup() : "<CR>"
+
+    " 辞書の定義
+    let g:neocomplete#sources#dictionary#dictionaries = {
+        \ 'default' : '',
+        \ 'vimshell' : $HOME.'/.vimshell_hist',
+        \ 'c' : $HOME . '/.vim/dict/c.dict',
+        \ 'cpp' : $HOME . '/.vim/dict/cpp.dict',
+        \ 'scala' : $HOME . '/.vim/dict/scala.dict',
+    \ }
+    autocmd FileType * execute printf("setlocal dict=$HOME/.vim/dict/%s.dict", &filetype)
 else
     " Neocomplcacheの有効化
     let g:neocomplcache_enable_at_startup = 1
@@ -342,20 +387,14 @@ let g:startify_bookmarks = [
         \ ]
 
 
-" ----- taglist settings -----
+" ----- tagbar -----
 " SHOULD EXEC A ONE-LINER BELOW
 " % brew install ctags
 
 " ctagsのコマンド
-let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
-" 現在表示中のファイルのみのタグしか表示しない
-let Tlist_Show_One_File = 1
-" 右側にtag listのウインドを表示する
-let Tlist_Use_Right_Window = 1
-" taglistのウインドウだけならVimを閉じる
-let Tlist_Exit_OnlyWindow = 1
-" C-lでtaglistウインドウを開いたり閉じたり出来るショートカット
-nnoremap <silent> <C-l> :TlistToggle<CR>
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+" <F8>でtagbar表示をトグル
+nnoremap <silent> <F8> :TagbarToggle<CR>
 
 
 " ---- vim-expand-region settings -----
