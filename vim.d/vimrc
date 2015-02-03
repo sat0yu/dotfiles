@@ -42,6 +42,7 @@ if has('vim_starting')
     NeoBundle 'majutsushi/tagbar'
     NeoBundle 'terryma/vim-expand-region'
     NeoBundle 'tyru/caw.vim.git'
+    NeoBundle 'derekwyatt/vim-scala'
 
     call neobundle#end()
 endif
@@ -230,6 +231,13 @@ nnoremap st :<C-u>tabnew<CR>
 " ノーマルモード時だけ ; と : を入れ替える(for MBA)
 "nnoremap ; :
 "nnoremap : ;
+
+
+" ----- VimShell settings -----
+nnoremap <F2> :VimShellPop<CR>
+imap <F3> <ESC><F3>
+nnoremap <F3> :q<CR>
+
 
 " ----- Unite settings -----
 " 入力モードで開始する
