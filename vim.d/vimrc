@@ -228,9 +228,9 @@ nnoremap st :<C-u>tabnew<CR>
 " タブの移動はvim-submodeへ移行
 "nnoremap sn gt
 "nnoremap sp gT
-" ノーマルモード時だけ ; と : を入れ替える(for MBA)
-"nnoremap ; :
-"nnoremap : ;
+" ; と : を入れ替える(for MBA)
+" noremap ; :
+" noremap : ;
 
 
 " ----- VimShell settings -----
