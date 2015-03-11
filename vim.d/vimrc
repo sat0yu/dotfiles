@@ -92,7 +92,7 @@ set hlsearch
 set mouse=a
 " 不可視文字を表示
 set list
-set listchars=trail:-,extends:>,precedes:<,nbsp:%,eol:$,tab:▸\ 
+set listchars=trail:-,extends:>,precedes:<,nbsp:%,eol:↲,tab:▸\
 " タブ幅を指定
 set tabstop=4
 set shiftwidth=4
@@ -123,6 +123,19 @@ nmap n nzz
 nmap N Nzz
 " Yの動作をDと揃える(行末までヤンク)
 nnoremap Y y$
+" insertモードでカーソルの形を変える
+if !has('gui_running')
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+" 保存時に行末の空白を除去する
+autocmd BufWritePre * :%s/\s\+$//ge
+" □とか○の文字があってもカーソル位置がずれないようにする
+" iTerm2の Preferences → Profiles → Textタブで
+" 「Treat ambiguous-width characters as double width」をチェック
+if exists('&ambiwidth')
+    set ambiwidth=double
+endif
 
 " ----- function keys -----
 command! Run call s:Run()
