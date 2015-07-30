@@ -21,9 +21,9 @@ alias arena="sh ~/dotfiles/src/topcoder.sh"
 
 alias dash="open dash://"
 
-alias startvm="VBoxManage startvm ubuntu --type=headless"
-alias pausevm="VBoxManage controlvm ubuntu pause"
-alias resumevm="VBoxManage controlvm ubuntu resume"
+alias vmstart="VBoxManage startvm CentOS7 --type=headless"
+alias vmpause="VBoxManage controlvm CentOS7 pause"
+alias vmresume="VBoxManage controlvm CentOS7 resume"
 alias vmlist="VBoxManage list runningvms"
 
 alias -s py=python
