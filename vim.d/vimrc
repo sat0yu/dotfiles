@@ -43,6 +43,7 @@ if has('vim_starting')
     NeoBundle 'terryma/vim-expand-region'
     NeoBundle 'tyru/caw.vim.git'
     NeoBundle 'derekwyatt/vim-scala'
+    NeoBundle 'elixir-lang/vim-elixir'
 
     call neobundle#end()
 endif
