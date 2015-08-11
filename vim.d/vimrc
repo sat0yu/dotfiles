@@ -40,6 +40,7 @@ if has('vim_starting')
     NeoBundle 'osyo-manga/vim-anzu'
     NeoBundle 'mhinz/vim-startify'
     NeoBundle 'majutsushi/tagbar'
+    NeoBundle 'soramugi/auto-ctags.vim'
     NeoBundle 'terryma/vim-expand-region'
     NeoBundle 'tyru/caw.vim.git'
     NeoBundle 'derekwyatt/vim-scala'
@@ -417,6 +418,17 @@ let g:startify_bookmarks = [
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 " <F8>でtagbar表示をトグル
 nnoremap <silent> <F8> :TagbarToggle<CR>
+
+
+" ----- auto-ctags -----
+" ファイル保存時に自動でtagsファイル作成
+let g:auto_ctags = 1
+" tagsファイル作成場所
+let g:auto_ctags_directory_list = ['.git', '.svn']
+" tagsファイル格納(読み取り)場所
+set tags+=.git/tags,/.svn/tags
+" 複数タグが存在することを想定
+nnoremap <C-]> g<C-]>
 
 
 " ---- vim-expand-region settings -----
