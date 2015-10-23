@@ -417,3 +417,12 @@ done
 precmd() {
     _z --add "$(pwd -P)"
 }
+
+#  VirtualBox
+function vmstart(){
+    command VBoxManage startvm $1 --type=headless
+}
+function vmpause(){
+    command VBoxManage controlvm $1 savestate
+}
+alias vmlist="VBoxManage list runningvms"
