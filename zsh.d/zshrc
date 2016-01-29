@@ -426,3 +426,13 @@ function vmpause(){
     command VBoxManage controlvm $1 savestate
 }
 alias vmlist="VBoxManage list runningvms"
+
+# pyenv
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)";
+fi
+
+# rbenv
+if which rbenv > /dev/null; then
+    eval "$(rbenv init -)"
+fi
