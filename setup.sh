@@ -13,6 +13,7 @@ current_dir=`pwd`
 common=( \
     'zsh' 'wget' 'ctags' 'peco' 'lua' 'lv' 'tmux' 'tig' 'gnu-sed' \
     'ack' 'colordiff' 'nkf' 'valgrind' 'z' 'mosh' 'mp3gain' \
+    'pyenv' 'pyenv-virtualenv' \
     'vim --devel --with-lua' \
     'subversion --unicode-path' \
     'weechat --with-ruby --with-python --with-perl' \
