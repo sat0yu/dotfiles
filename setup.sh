@@ -12,7 +12,7 @@ current_dir=`pwd`
 #brew upgrade
 common=( \
     'zsh' 'wget' 'ctags' 'peco' 'lua' 'lv' 'tmux' 'tig' 'gnu-sed' \
-    'ack' 'colordiff' 'nkf' 'valgrind' 'z' 'mosh' 'mp3gain' \
+    'ag' 'ack' 'colordiff' 'nkf' 'valgrind' 'z' 'mosh' 'mp3gain' 'jq' \
     'pyenv' 'pyenv-virtualenv' \
     'vim --devel --with-lua' \
     'subversion --unicode-path' \
