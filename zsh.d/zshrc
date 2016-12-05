@@ -432,17 +432,6 @@ alias vmlist="VBoxManage list runningvms"
 
 # pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PYENV_ROOT="${HOME}/.pyenv"
-if [ -d "${PYENV_ROOT}" ]; then
-    export PATH=${PYENV_ROOT}/bin:$PATH
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
-# rbenv
-if which rbenv > /dev/null; then
-    eval "$(rbenv init -)"
-fi
 
 ## anyframe
 # git clone git@github.com:mollifier/anyframe.git ~/.zsh/anyframe
