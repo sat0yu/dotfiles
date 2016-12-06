@@ -87,8 +87,6 @@ syntax on
 " ステータスバーを常に表示
 set laststatus=2
 "set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}][%{&ff}][%3l,%3c,%3p]
-" カーソル行をアンダーライン
-set cursorline
 " スクロール時の余白確保
 set scrolloff=10
 " Macターミナル上での動作が重くなる現象を軽減
