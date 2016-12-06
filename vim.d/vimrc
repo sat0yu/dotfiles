@@ -183,6 +183,11 @@ autocmd BufWritePre * :%s/\s\+$//ge
 if exists('&ambiwidth')
     set ambiwidth=double
 endif
+" 表示行単位で移動する
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up>   gk
 
 " ----- function keys -----
 command! Run call s:Run()
