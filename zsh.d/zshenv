@@ -38,3 +38,5 @@ export PATH="${HOME}/.cabal/bin:$PATH"
 # git clone https://github.com/riywo/anyenv ~/.anyenv
 export PATH="${HOME}/.anyenv/bin:${PATH}"
 eval "$(anyenv init -)"
+## for nodejs packages installed locally
+export PATH=$PATH:./node_modules/.bin
