@@ -515,8 +515,8 @@ call submode#map('tabmove', 'n', '', 'p', 'gT')
 
 
 " ---- caw.vim -----
-nmap C <Plug>(caw:i:toggle)
-vmap C <Plug>(caw:i:toggle)
+nmap C <Plug>(caw:hatpos:toggle)
+vmap C <Plug>(caw:hatpos:toggle)
 
 
 " ---- vim-coffee-script -----
