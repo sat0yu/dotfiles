@@ -63,6 +63,7 @@ if has('vim_starting')
     NeoBundleLazy 'kchmck/vim-coffee-script', {'autoload': {'filetypes':'coffee'}}
     NeoBundleLazy 'derekwyatt/vim-scala', {'autoload': {'filetypes':'scala'}}
     NeoBundleLazy 'elixir-lang/vim-elixir', {'autoload': {'filetypes':'elixir'}}
+    NeoBundle 'kakkyz81/evervim'
 
     call neobundle#end()
 endif
@@ -530,3 +531,17 @@ autocmd BufWritePost *.coffee silent make!
 autocmd QuickFixCmdPost * nested cwindow | redraw!
 " Ctrl-cで右ウィンドウにコンパイル結果を一時表示する
 nnoremap <silent> <C-l> :CoffeeCompile vert <CR><C-w>h
+
+
+" ---- evervim -----
+" This plug-in needs the python embeded vim
+" and markdown library in that python.
+" These conditions are checked with below commands:
+" 1) :echo has('python')
+" 2) :python import markdown
+" And an API-key of evernote has to be specified.
+" let g:evervim_devtoken='S=s999:U=9ee99c9:E=999d9999c99:C=99a99a99999:P=9cd:A=en-devtoken:H=cd99999de9999c99b999d99d999cb9f9'
+nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR>
+nnoremap <silent> ,eT :<C-u>EvervimListTags<CR>
+nnoremap <silent> ,en :<C-u>EvervimCreateNote<CR>
+nnoremap ,es :<C-u>EvervimSearchByQuery<SPACE>
