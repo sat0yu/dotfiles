@@ -9,6 +9,7 @@ export LC_CTYPE=en_US.UTF-8
 ## viキーバインドを使う。
 bindkey -v
 bindkey -M viins '^[' vi-cmd-mode
+bindkey -M viins 'jj' vi-cmd-mode
 ## emacsライクな操作も許容
 bindkey "^e" end-of-line
 bindkey "^a" beginning-of-line
