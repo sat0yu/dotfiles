@@ -257,10 +257,10 @@ function! s:DebugCplus()
 endfunction
 
 " ----- key-binds in insert mode -----
-inoremap <C-c> <NOP>
 inoremap <c-a> <home>
 inoremap <c-e> <end>
-
+" jjでエスケープ
+inoremap <silent> jj <ESC>
 
 " ----- window operation settings -----
 " prefix key
