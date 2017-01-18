@@ -15,6 +15,9 @@ bindkey "^e" end-of-line
 bindkey "^a" beginning-of-line
 bindkey "^f" forward-char
 bindkey "^b" backward-char
+bindkey "^h" backward-delete-char
+bindkey "^d" delete-char
+bindkey "^k" kill-line
 bindkey "^P" up-line-or-history
 bindkey "^N" down-line-or-history
 

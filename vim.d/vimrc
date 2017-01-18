@@ -256,9 +256,14 @@ function! s:DebugCplus()
     :!lldb ./%:r.out
 endfunction
 
+
 " ----- key-binds in insert mode -----
 inoremap <c-a> <home>
 inoremap <c-e> <end>
+inoremap <c-h> <bs>
+inoremap <c-d> <delete>
+inoremap <c-f> <right>
+inoremap <c-b> <left>
 " jjでエスケープ
 inoremap <silent> jj <ESC>
 
