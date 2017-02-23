@@ -376,6 +376,7 @@ endfunction
 " ----- NERDTree settings -----
 let file_name = expand("%")
 nnoremap <C-e> :NERDTreeToggle<CR>
+nnoremap <C-c><C-e> :NERDTreeFind<CR>
 " vim起動時にツリーを表示する
 "if has('vim_starting') &&  file_name == ""
 "	autocmd VimEnter * NERDTree ./
