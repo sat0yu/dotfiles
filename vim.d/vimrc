@@ -64,6 +64,7 @@ if has('vim_starting')
     NeoBundleLazy 'derekwyatt/vim-scala', {'autoload': {'filetypes':'scala'}}
     NeoBundleLazy 'elixir-lang/vim-elixir', {'autoload': {'filetypes':'elixir'}}
     NeoBundle 'kakkyz81/evervim'
+    NeoBundle 'rgarver/Kwbd.vim'
 
     call neobundle#end()
 endif
@@ -196,6 +197,10 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up>   gk
+" バッファ操作
+nnoremap <C-w><C-n> :bn<CR>
+nnoremap <C-w><C-p> :bp<CR>
+nnoremap <C-w><C-k> :Kwbd<CR>
 
 " ----- function keys -----
 command! Run call s:Run()
