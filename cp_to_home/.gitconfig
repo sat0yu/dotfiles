@@ -1,17 +1,19 @@
 [user]
-	name = Yusuke Sato
-	email = yusuke1.sato9.git@gmail.com
+    name = Yusuke Sato
+    email = yusuke1.sato9.git@gmail.com
 [color]
-	ui = true
+    ui = true
 [alias]
-	co = checkout
-	st = status
-	stat = status
-	br = branch
+    co = checkout
+    st = status
+    stat = status
+    br = branch
 
     branches = branch -a
     tags = tag
     stashes = stash list
+
+    refresh= !git fetch origin && git remote prune origin
 
     unstage = reset -q HEAD --
     discard = checkout --
@@ -21,8 +23,11 @@
     graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
 
     precommit = diff --cached --diff-algorithm=minimal -w
+
+    ls = ls-files
 [core]
-	editor = vim
-	excludesfile = ~/.gitignore_global
+    editor = vim
+    excludesfile = ~/.gitignore_global
+    autocrlf = input
 [merge]
-	ff = false
+    ff = false
