@@ -356,6 +356,11 @@ alias -g G='| grep'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g S='| sed'
+alias -g X='| xargs'
+function git-hash(){
+  git log --oneline --branches | peco | awk '{print $1}'
+}
+alias -g GL='$(git-hash)'
 ## 完全に削除
 alias rr="command rm -rf"
 ## ファイル操作を確認する
