@@ -446,7 +446,7 @@ alias vmlist="VBoxManage list runningvms"
 # pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
-## anyframe
+# anyframe
 # git clone git@github.com:mollifier/anyframe.git ~/.zsh/anyframe
 fpath=($HOME/.zsh/anyframe(N-/) $fpath)
 autoload -Uz anyframe-init
@@ -459,3 +459,20 @@ bindkey '^r' anyframe-widget-execute-history
 bindkey '^x^b' anyframe-widget-checkout-git-branch
 # プロセス一覧をインクリメントサーチ & kill
 bindkey '^x^k' anyframe-widget-kill
+
+## pet
+# https://github.com/knqyf263/pet
+# 直前のコマンドをpetに登録
+function prev() {
+  PREV=$(fc -lrn | head -n 1)
+  sh -c "pet new `printf %q "$PREV"`"
+}
+ #コマンドライン上にスニペットを表示する
+function pet-select() {
+  BUFFER=$(pet search --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N pet-select
+stty -ixon
+bindkey '^s' pet-select
