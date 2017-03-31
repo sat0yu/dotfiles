@@ -66,6 +66,7 @@ if has('vim_starting')
     NeoBundle 'kakkyz81/evervim'
     NeoBundle 'rgarver/Kwbd.vim'
     NeoBundle 'rking/ag.vim'
+    NeoBundle 'tpope/vim-fugitive'
 
     call neobundle#end()
 endif
@@ -574,3 +575,8 @@ nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR>
 nnoremap <silent> ,eT :<C-u>EvervimListTags<CR>
 nnoremap <silent> ,en :<C-u>EvervimCreateNote<CR>
 nnoremap ,es :<C-u>EvervimSearchByQuery<SPACE>
+
+" ---- tpope/vim-fugitive' ----
+nnoremap <silent> ,gd :<C-u>Gdiff<CR>
+nnoremap <silent> ,gb :<C-u>Gblame<CR>
+nnoremap <silent> ,gs :<C-u>Gstatus<CR>
