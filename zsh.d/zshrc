@@ -446,6 +446,14 @@ alias vmlist="VBoxManage list runningvms"
 # pyenv
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
+# rbenv (installed via brew)
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# nvm (installed via brew)
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
 # anyframe
 # git clone git@github.com:mollifier/anyframe.git ~/.zsh/anyframe
 fpath=($HOME/.zsh/anyframe(N-/) $fpath)
