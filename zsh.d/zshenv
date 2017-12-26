@@ -34,9 +34,9 @@ set -o noclobber
 # haskell cabalコマンドでインストールした実行ファイル群へパスを通す
 export PATH="${HOME}/.cabal/bin:$PATH"
 
-# anyenv
-# git clone https://github.com/riywo/anyenv ~/.anyenv
-export PATH="${HOME}/.anyenv/bin:${PATH}"
-eval "$(anyenv init -)"
-## for nodejs packages installed locally
-export PATH=$PATH:./node_modules/.bin
+# rbenv (installed via brew)
+eval "$(rbenv init -)"
+
+# nvm (installed via brew)
+export NVM_DIR="/usr/local/opt/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" 
