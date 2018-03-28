@@ -452,7 +452,8 @@ eval "$(rbenv init -)"
 
 # nvm (installed via brew)
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+source "/usr/local/opt/nvm/nvm.sh"
+source "/usr/local/etc/bash_completion.d/nvm"
 
 # anyframe
 # git clone git@github.com:mollifier/anyframe.git ~/.zsh/anyframe
