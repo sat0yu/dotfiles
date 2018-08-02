@@ -444,7 +444,9 @@ function vmpause(){
 alias vmlist="VBoxManage list runningvms"
 
 # pyenv
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # rbenv (installed via brew)
 export PATH="$HOME/.rbenv/bin:$PATH"
