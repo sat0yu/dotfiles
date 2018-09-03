@@ -5,6 +5,8 @@ alias -g T='| tail'
 
 alias st="svn status"
 alias gs="git status"
+alias gd="git diff"
+alias gdc="git diff --cached"
 alias tig="tig --all"
 
 alias v="vim"

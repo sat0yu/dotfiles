@@ -4,16 +4,19 @@
 [color]
     ui = true
 [alias]
+    ci = commit
     co = checkout
+    chp = cherry-pick
     st = status
-    stat = status
     br = branch
+    d = diff
 
     branches = branch -a
     tags = tag
     stashes = stash list
 
     refresh= !git fetch origin && git remote prune origin
+    fpr= "!f() { git fetch origin refs/pull/$1/head:pr/$1; }; f"
 
     unstage = reset -q HEAD --
     discard = checkout --
