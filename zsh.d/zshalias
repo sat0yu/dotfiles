@@ -34,3 +34,16 @@ case ${OSTYPE} in
         # Linux
         ;;
 esac
+
+if type bat >/dev/null 2>&1; then
+  alias cat='bat'
+  alias c='bat'
+fi
+
+if type prettyping >/dev/null 2>&1; then
+  alias ping='prettyping --nolegend'
+fi
+
+if type htop >/dev/null 2>&1; then
+  alias top="sudo htop" # alias top and fix high sierra bug
+fi
