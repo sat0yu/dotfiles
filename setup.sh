@@ -11,7 +11,7 @@ current_dir=`pwd`
 #brew update
 #brew upgrade
 common=( \
-    'zsh' 'wget' 'ctags' 'peco' 'lua' 'lv' 'tmux' 'tig' 'gnu-sed' \
+    'zsh' 'wget' 'ctags' 'peco' 'lua' 'lv' 'tmux' 'tig' 'hub' 'gnu-sed' \
     'ag' 'ack' 'colordiff' 'nkf' 'valgrind' 'z' 'mosh' 'mp3gain' 'jq' \
     'pyenv' 'pyenv-virtualenv' \
     'vim --devel --with-lua' \
