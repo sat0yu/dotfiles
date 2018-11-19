@@ -459,7 +459,7 @@ source "/usr/local/opt/nvm/nvm.sh"
 source "/usr/local/etc/bash_completion.d/nvm"
 
 # golang
-export GOPATH=$HOME/workspace/golang
+export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # anyframe
