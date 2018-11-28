@@ -10,6 +10,8 @@
     st = status
     br = branch
     d = diff
+    dod = diff origin/develop...
+    dom = diff origin/master...
 
     branches = branch -a
     tags = tag
