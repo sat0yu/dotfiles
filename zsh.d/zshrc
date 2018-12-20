@@ -221,6 +221,10 @@ update_prompt()
     if [ -n "$vcs_info_msg_0_" ]; then
 	RPROMPT="${vcs_info_msg_0_}-${RPROMPT}"
     fi
+
+    # append kubernetes context/namespace
+    #`go get github.com/yuya-takeyama/kube_prompt_info`
+    $(type kube_prompt_info >&/dev/null) && RPROMPT="($(kube_prompt_info))-${RPROMPT}"
 }
 
 ## コマンド実行前に呼び出されるフック。

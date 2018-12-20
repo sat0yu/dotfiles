@@ -15,6 +15,7 @@ alias e="emacs -nw"
 alias g="git"
 alias t="tig"
 alias d="docker"
+alias kube="kubectl"
 
 alias tex="platex"
 alias bib="pbibtex"
