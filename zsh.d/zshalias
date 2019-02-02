@@ -21,12 +21,6 @@ alias tex="platex"
 alias bib="pbibtex"
 alias dvi="dvipdfmx"
 
-alias arena="sh ~/dotfiles/src/topcoder.sh"
-
-alias dash="open dash://"
-
-alias -s py=python
-
 case ${OSTYPE} in
     darwin*)
         # Mac
