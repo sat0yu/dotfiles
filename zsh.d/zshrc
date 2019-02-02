@@ -371,14 +371,8 @@ alias rr="command rm -rf"
 alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
-## pushd/popdのショートカット
-alias pd="pushd"
-alias po="popd"
 ## grepの表示を改善
 alias grep="grep -n --color=auto"
-## exitのショートカット
-alias x="exit"
-
 
 ## カスタムaliasの設定
 ### ~/zsh.d/zshalias → ~/zshaliasの順に探して
@@ -437,15 +431,6 @@ done
 precmd() {
     _z --add "$(pwd -P)"
 }
-
-#  VirtualBox
-function vmstart(){
-    command VBoxManage startvm $1 --type=headless
-}
-function vmpause(){
-    command VBoxManage controlvm $1 savestate
-}
-alias vmlist="VBoxManage list runningvms"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
