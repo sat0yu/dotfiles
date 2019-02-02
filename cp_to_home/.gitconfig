@@ -6,12 +6,13 @@
 [alias]
     ci = commit
     co = checkout
+    us = unstage
     chp = cherry-pick
     st = status
     br = branch
+    f = fetch
     d = diff
-    dod = diff origin/develop...
-    dom = diff origin/master...
+    p = push
 
     branches = branch -a
     tags = tag
