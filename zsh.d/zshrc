@@ -474,14 +474,6 @@ function cd_repo() {
 zle -N cd_repo
 bindkey '^g' cd_repo
 
-# hub
-function open_repo_on_remote() {
-  hub browse $(ghq list | peco | cut -d "/" -f 2,3)
-  zle reset-prompt
-}
-zle -N open_repo_on_remote
-bindkey '^h' open_repo_on_remote
-
 ## pet
 # https://github.com/knqyf263/pet
 # 直前のコマンドをpetに登録
