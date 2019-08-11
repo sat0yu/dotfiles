@@ -177,3 +177,6 @@ bind main    w      @hub browse -- compare/%(branch)?expand=1
 bind diff    w      @hub browse -- compare/%(branch)?expand=1
 bind refs    w      @hub browse -- compare/%(branch)?expand=1
 
+# {}でdiff contextを拡大縮小
+bind diff { :toggle diff-context -10
+bind diff } :toggle diff-context +10
