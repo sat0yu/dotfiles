@@ -84,27 +84,27 @@ setopt ignore_eof
 ### ps: 自分関連のプロセスのみ表示。
 case $(uname) in
     *BSD|Darwin)
-	if [ -x "$(which gnuls)" ]; then
-	    alias ls="gnuls"
-	    alias la="ls -lhAF --color=auto"
-	else
-	    alias la="ls -lhAFG"
-	fi
-	alias ps="ps -fU$(whoami)"
-	;;
+    if [ -x "$(which gnuls)" ]; then
+        alias ls="gnuls"
+        alias la="ls -lhAF --color=auto"
+    else
+        alias la="ls -lhAFG"
+    fi
+    alias ps="ps -fU$(whoami)"
+    ;;
     SunOS)
-	if [ -x "`which gls`" ]; then
-	    alias ls="gls"
-	    alias la="ls -lhAF --color=auto"
-	else
-	    alias la="ls -lhAF"
-	fi
-	alias ps="ps -fl -u$(/usr/xpg4/bin/id -un)"
-	;;
+    if [ -x "`which gls`" ]; then
+        alias ls="gls"
+        alias la="ls -lhAF --color=auto"
+    else
+        alias la="ls -lhAF"
+    fi
+    alias ps="ps -fl -u$(/usr/xpg4/bin/id -un)"
+    ;;
     *)
-	alias la="ls -lhAF --color=auto"
-	alias ps="ps -fU$(whoami) --forest"
-	;;
+    alias la="ls -lhAF --color=auto"
+    alias ps="ps -fU$(whoami) --forest"
+    ;;
 esac
 alias ls="la"
 
@@ -116,7 +116,7 @@ alias -g T='| tail'
 alias -g S='| sed'
 alias -g X='| xargs'
 function git-hash(){
-  git log --oneline --branches | peco | awk '{print $1}'
+  git log --oneline --branches | fzf | awk '{print $1}'
 }
 alias -g GL='$(git-hash)'
 ## 完全に削除
@@ -140,7 +140,7 @@ alias grep="grep -n --color=auto"
 ### 2011-11-06
 alias_files=(~/zsh.d/zshalias(N-.)
              ~/zshalias(N-.)
-	     ~/dotfiles/zsh.d/zshalias(N-.))
+             ~/dotfiles/zsh.d/zshalias(N-.))
 for alias_file in ${alias_files}; do
     source "${alias_file}"
     break
@@ -177,7 +177,7 @@ function prev() {
   PREV=$(fc -lrn | head -n 1)
   sh -c "pet new `printf %q "$PREV"`"
 }
- #コマンドライン上にスニペットを表示する
+# コマンドライン上にスニペットを表示する
 function pet-select() {
   BUFFER=$(pet search --query "$LBUFFER")
   CURSOR=$#BUFFER
@@ -186,3 +186,13 @@ function pet-select() {
 zle -N pet-select
 stty -ixon
 bindkey '^s' pet-select
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# fzf (https://github.com/junegunn/fzf)
+# brew install fzf
+# $(brew --prefix)/opt/fzf/install
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
