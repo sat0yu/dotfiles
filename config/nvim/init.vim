@@ -200,6 +200,7 @@ Plug 'tyru/caw.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
