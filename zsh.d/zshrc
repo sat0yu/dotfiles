@@ -139,7 +139,7 @@ alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
 ## grepの表示を改善
-alias grep="grep -n --color=auto"
+alias grep="grep --color=auto"
 
 ## カスタムaliasの設定
 ### ~/zsh.d/zshalias → ~/zshaliasの順に探して
@@ -220,3 +220,9 @@ source "$(brew --prefix nvm)/nvm.sh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--reverse'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+
+# gcloud (brew cask install google-cloud-sdk)
+export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
