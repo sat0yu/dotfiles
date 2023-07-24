@@ -159,9 +159,6 @@ for alias_file in ${alias_files}; do
     break
 done
 
-## homebrewでインストールしたプログラムを優先する
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-
 # golang
 export GO111MODULE=on
 export GOPATH=$HOME/go
@@ -222,9 +219,8 @@ export FZF_DEFAULT_OPTS='--reverse'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 # gcloud (brew cask install google-cloud-sdk)
-export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # Launch colima if there's no docker socket opened
