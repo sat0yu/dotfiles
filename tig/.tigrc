@@ -107,6 +107,10 @@ bind stash   D      ?git stash drop %(stash)
 # D でファイルを削除 (tree-view)
 bind tree    D      ?git rm %(file)
 
+# l で選択中のファイルに対してパッチ単位の変更ログ表示
+bind tree    l      !git log -p %(file)
+bind status  l      !git log -p %(file)
+
 # x でトラッキングされていないファイルをすべて削除
 bind main    x      ?git clean -d -f
 bind status  x      ?git clean -d -f
