@@ -162,7 +162,7 @@ bindkey '^x^b' anyframe-widget-checkout-git-branch
 # プロセス一覧をインクリメントサーチ & kill
 bindkey '^x^k' anyframe-widget-kill
 # ghqで管理しているリポジトリに移動
-bindkey '^g' anyframe-widget-cd-ghq-repository
+bindkey '^G' anyframe-widget-cd-ghq-repository
 
 ## pet
 # https://github.com/knqyf263/pet
