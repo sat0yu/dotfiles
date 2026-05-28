@@ -242,5 +242,5 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # Launch colima if there's no docker socket opened
 if [ ! -S /Users/yusuke_sato/.colima/default/docker.sock ]; then
-  colima start --cpu 4 --memory 8 --disk 40 --dns 1.1.1.1 --vm-type vz --vz-rosetta --mount-type virtiofs
+  colima start --cpu 4 --memory 8 --disk 64 --network-address --dns 8.8.8.8 --arch aarch64 --vm-type vz --vz-rosetta --mount-type virtiofs
 fi
