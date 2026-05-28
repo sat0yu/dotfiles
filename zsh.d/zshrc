@@ -214,6 +214,27 @@ function rg_fzf() {
 zle -N rg_fzf
 bindkey '^F' rg_fzf
 
+# git-fzf integration
+function gwt_impl() {
+  local dir
+  dir=$(git worktree list | fzf --select-1 -e | cut -d ' ' -f 1) || return
+  cd "$dir"
+
+}
+alias gwt="gwt_impl"
+function gbr_impl() {
+  local branch
+  branch=$(
+    git for-each-ref --format='%(refname:short)' refs/heads \
+      | fzf --select-1 -e \
+          --preview 'git log -1 --color=always --pretty=format:"%h %s%n%an %ad" {}' \
+          --preview-window=right:60% \
+          --ansi
+  ) || return
+  git switch "$branch"
+}
+alias gbr="gbr_impl"
+
 # gcloud (brew cask install google-cloud-sdk)
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
