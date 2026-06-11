@@ -9,7 +9,7 @@
     us = unstage
     chp = cherry-pick
     st = status
-    br = branch
+    br = branch -v
     f = fetch
     d = diff
     p = push

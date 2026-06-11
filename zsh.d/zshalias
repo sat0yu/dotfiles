@@ -7,6 +7,7 @@ alias st="svn status"
 alias gs="git status"
 alias gd="git diff"
 alias gdc="git diff --cached"
+alias gbackup='git br $(git branch --show-current)-$(date +"%Y%m%d%H%M%S")'
 alias tig="tig --all"
 
 alias v="nvim"
