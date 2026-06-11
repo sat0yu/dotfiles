@@ -63,6 +63,13 @@ watch="all"
 ## ^Dでログアウトしないようにする。
 setopt ignore_eof
 
+# Edit the current command line in $EDITOR
+VISUAL=vim
+EDITOR=vim
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
 ## lsとpsの設定
 ### ls: できるだけGNU lsを使う。
 ### ps: 自分関連のプロセスのみ表示。
